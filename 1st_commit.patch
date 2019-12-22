@@ -1,0 +1,54 @@
+Index: .idea/libraries/gson_2_8_2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/gson_2_8_2.xml	(revision 641e01140cf96ccaac38f5c7755e4f0ff2de4c43)
++++ .idea/libraries/gson_2_8_2.xml	(date 1576502483326)
+@@ -1,8 +1,6 @@
+ <component name="libraryTable">
+   <library name="gson-2.8.2">
+-    <CLASSES>
+-      <root url="jar://$PROJECT_DIR$/lib/gson-2.8.2.jar!/" />
+-    </CLASSES>
++    <CLASSES />
+     <JAVADOC />
+     <SOURCES />
+   </library>
+Index: src/main/java/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Main.java	(revision 641e01140cf96ccaac38f5c7755e4f0ff2de4c43)
++++ src/main/java/Main.java	(date 1576502251630)
+@@ -17,6 +17,7 @@
+         try {
+             response = client.newCall(request).execute();
+             String jsonData = null;
++
+             if (response.body() != null){
+                 jsonData = response.body().string();
+             }
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 641e01140cf96ccaac38f5c7755e4f0ff2de4c43)
++++ pom.xml	(date 1576502057730)
+@@ -7,7 +7,6 @@
+     <artifactId>practicaTMP</artifactId>
+     <version>1.0-SNAPSHOT</version>
+     <dependencies>
+-
+         <dependency>
+             <groupId>com.squareup.okhttp3</groupId>
+             <artifactId>okhttp</artifactId>
+diff --git lib/gson-2.8.2.jar lib/gson-2.8.2.jar
+deleted file mode 100644
+index d0d030c6371cb44e7caee238f7bf148c7732ce28..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
