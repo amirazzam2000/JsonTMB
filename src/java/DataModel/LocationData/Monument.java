@@ -1,6 +1,8 @@
-package Location;
+package DataModel.LocationData;
 
-public class Monument extends Location{
+import DataModel.LocationData.Location;
+
+public class Monument extends Location {
     String architect;
     int inauguration;
 

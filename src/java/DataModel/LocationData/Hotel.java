@@ -1,4 +1,4 @@
-package Location;
+package DataModel.LocationData;
 
 public class Hotel extends Location {
     int stars;

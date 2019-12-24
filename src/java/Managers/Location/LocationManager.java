@@ -1,4 +1,6 @@
-package Location;
+package Managers.Location;
+
+import DataModel.LocationData.Location;
 
 import java.util.ArrayList;
 

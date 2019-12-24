@@ -12,7 +12,8 @@ public class Main {
         // app_id : 151d4902 , app_key : 771e0a32ea2b2631b0ad21f66a4ea564
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.tmb.cat/v1/transit/parades/2775?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564")
+                //.url("https://api.tmb.cat/v1/transit/parades/2775?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564")
+                .url("https://api.tmb.cat/v1/transit/parades?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564")
                 .build();
         Response response;
 

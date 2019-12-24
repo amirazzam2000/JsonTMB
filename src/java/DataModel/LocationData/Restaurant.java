@@ -1,6 +1,8 @@
-package Location;
+package DataModel.LocationData;
 
-public class Restaurant extends Location{
+import DataModel.LocationData.Location;
+
+public class Restaurant extends Location {
     String[] characteristics;
 
     public Restaurant(String name, float[] coordinates, String description, String[] characteristics) {

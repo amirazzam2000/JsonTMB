@@ -1,6 +1,5 @@
-package API;
+package JsonParsing.Transportation;
 
 public class JsonStationReader {
-
 
 }
