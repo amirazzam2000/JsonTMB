@@ -9,12 +9,10 @@ public class LocationManager {
 
 
     public LocationManager() {
-
         this.locations = new ArrayList<>();
     }
 
     public void add(Location location){
-
         locations.add(location);
     }
 }
