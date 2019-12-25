@@ -1,5 +1,10 @@
 package JsonParsing.Transportation;
 
-public class JsonStationReader {
+import Managers.Transportation.StationManger;
 
+public class JsonStationReader {
+    public static StationManger readStations(){
+
+        return null;
+    }
 }
