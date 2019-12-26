@@ -3,16 +3,30 @@ package DataModel.TransportationData;
 public class Station {
     float[] coordinates;
     String stationName;
-    long stationId;
+    String stationId;
     String Date;
     String lineName;
 
-    public Station(float[] coordinates, String stationName, long stationId, String date, String lineName) {
+    public Station(float[] coordinates, String stationName, String stationId, String date, String lineName) {
         this.coordinates = coordinates;
         this.stationName = stationName;
         this.stationId = stationId;
         Date = date;
         this.lineName = lineName;
+    }
+    public Station(Station that) {
+        this.coordinates = that.coordinates;
+        this.stationName = that.stationName;
+        this.stationId = that.stationId;
+        this.Date = that.Date;
+        this.lineName = that.lineName;
+    }
+    public Station(){
+        coordinates = new float[2];
+        stationName = null;
+        stationId = null;
+        Date = null;
+        lineName = null;
     }
 
     public float[] getCoordinates() {
@@ -31,11 +45,11 @@ public class Station {
         this.stationName = stationName;
     }
 
-    public long getStationId() {
+    public String getStationId() {
         return stationId;
     }
 
-    public void setStationId(long stationId) {
+    public void setStationId(String stationId) {
         this.stationId = stationId;
     }
 

@@ -12,6 +12,7 @@ public class StationManger {
     }
 
     public void add(Station station){
-        stations.add(station);
+
+        stations.add(new Station(station));
     }
 }

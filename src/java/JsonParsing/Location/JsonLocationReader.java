@@ -28,8 +28,8 @@ public class JsonLocationReader {
         try {
             // read the information inside the json file and store them in Gson Element
             jsonReader = new JsonReader(new FileReader("src/resources/location.json"));
-            JsonParser parser = new JsonParser();
-            JsonElement gson = parser.parse(jsonReader);
+
+            JsonElement gson = JsonParser.parseReader(jsonReader);
 
             // taking the information out of the Gson element and storing them in a json object
             JsonObject json = gson.getAsJsonObject();
