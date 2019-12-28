@@ -21,6 +21,7 @@ public class UI {
         System.out.println("4. Bus wait time");
         System.out.println("5. Exit");
         System.out.println();
+
         System.out.println("Select an option: ");
     }
     public static void printOption1Menu(){
