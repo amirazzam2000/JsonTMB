@@ -5,10 +5,10 @@ import JsonParsing.Transportation.JsonStationReader;
 public class Test {
     public static void main(String[] args) {
 
-        String stationJson;
+        String JsonString;
         JsonLocationReader.readLocations();
-        stationJson = WebManager.callAllStations();
-        if (stationJson != null)
-            JsonStationReader.readStations(stationJson);
+        JsonString = WebManager.callAllStations();
+        if (JsonString != null)
+            JsonStationReader.readStations(JsonString);
     }
 }

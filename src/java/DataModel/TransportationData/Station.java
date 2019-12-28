@@ -7,13 +7,6 @@ public class Station {
     String Date;
     String lineName;
 
-    public Station(float[] coordinates, String stationName, String stationId, String date, String lineName) {
-        this.coordinates = coordinates;
-        this.stationName = stationName;
-        this.stationId = stationId;
-        Date = date;
-        this.lineName = lineName;
-    }
     public Station(Station that) {
         this.coordinates = that.coordinates;
         this.stationName = that.stationName;

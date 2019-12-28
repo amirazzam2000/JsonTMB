@@ -35,7 +35,7 @@ public class JsonLocationReader {
             JsonObject json = gson.getAsJsonObject();
 
                 // read each location in the json object and store it in its corresponding class
-                for (JsonElement jsonObject: json.getAsJsonObject().get("locations").getAsJsonArray()) {
+                for (JsonElement jsonObject :json.getAsJsonObject().get("locations").getAsJsonArray()) {
                     float[] coordinates = new float[2];
                     coordinates[0] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
                     coordinates[1] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
