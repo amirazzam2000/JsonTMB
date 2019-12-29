@@ -16,7 +16,7 @@ public class MainSystem {
     public static void mainSystem(){
         UserManager users = new UserManager();
         Scanner scanner = new Scanner(System.in);
-        boolean flag = false;
+        boolean flag = true;
         boolean check = false ;
         int firstOption;
         String secondOption;
@@ -43,23 +43,23 @@ public class MainSystem {
                 case 1 :
                     do {
                         UI.printOption1Menu();
+                        scanner = new Scanner(System.in);
                         secondOption = scanner.nextLine();
                         switch (secondOption.toLowerCase()) {
                             case "a":
-                                UI.printMyLocationOption(users.getMyLocation());
                                 do {
+                                    UI.printMyLocationOption(users.getMyLocation());
                                     System.out.println("Want to create a new location? (yes/no)");
                                     input = scanner.nextLine();
                                     if(input.compareToIgnoreCase("yes") == 0){
-                                        flag = true;
                                         Location location = new Location();
                                         do {
                                             System.out.println("Location Name: ");
                                             location.setName(scanner.nextLine());
                                             check = LocationManager.checkLocationNameExists(location.getName());
-                                            if(!check)
+                                            if(check)
                                                 UI.printLocationExistsError();
-                                        }while(!check);
+                                        }while(check);
 
                                         do {
                                             System.out.println("Length: ");
@@ -70,17 +70,20 @@ public class MainSystem {
                                             if(!check)
                                                 UI.printErrorCoordinates();
                                         }while(!check);
+                                        scanner = new Scanner(System.in);
                                         System.out.println("Description: ");
                                         location.setDescription(scanner.nextLine());
+                                        users.createNewMyLocation(location);
+                                        UI.printInfoValidMessage();
                                     }
                                     else if(input.compareToIgnoreCase("no")==0){
-                                        flag = true;
+                                        flag = false;
                                     }
                                     else {
                                         UI.printInputErrorYN();
                                     }
                                 }while(flag);
-                                flag = false; // reinitializing the flag to false so we can re use it in the future
+                                flag = true; // reinitializing the flag to false so we can re use it in the future
                                 break;
                             case "b":
 

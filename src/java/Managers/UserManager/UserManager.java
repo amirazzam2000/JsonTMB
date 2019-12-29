@@ -51,15 +51,9 @@ public class UserManager {
         users.get(0).setStations(station);
     }
 
-    public boolean createNewLocation(float latitude, float longitude, String description, String name ){
-        if (LocationManager.checkCoordinates(latitude, longitude)){
-            Location aux = new Location(name, longitude, latitude, description);
-            if(LocationManager.checkLocationExists(aux)){
-                users.get(0).addLocation(aux);
-                LocationManager.add(aux);
-            }
-        }
-        return false;
+    public void createNewMyLocation(Location location){
+        users.get(0).addLocation(location);
+        LocationManager.add(location);
     }
 
 }

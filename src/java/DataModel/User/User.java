@@ -69,7 +69,6 @@ public class User {
 
     public void addLocation(Location location){
         myLocations.add(location);
-        locationHistory.add(location);
     }
 
     public ArrayList<Location> getMyLocations() {
