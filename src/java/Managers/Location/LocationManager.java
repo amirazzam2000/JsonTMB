@@ -12,7 +12,7 @@ public class LocationManager {
         locations = new ArrayList<>();
     }
 
-    public void add(Location location){
+    public static void add(Location location){
         locations.add(location);
     }
 

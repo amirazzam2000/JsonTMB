@@ -10,6 +10,13 @@ public class Location {
         this.coordinates = coordinates;
         this.description = description;
     }
+    public Location(String name, float longitude, float latitude , String description) {
+        this.name = name;
+        this.coordinates = new  float[2];
+        this.coordinates[0] = latitude;
+        this.coordinates[1] = longitude;
+        this.description = description;
+    }
 
     public String getName() {
         return name;

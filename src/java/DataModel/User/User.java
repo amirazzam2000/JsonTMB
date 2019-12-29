@@ -30,6 +30,9 @@ public class User {
         this.email = null;
         this.year = 0;
         this.stations = new ArrayList<>();
+        this.myLocations = new ArrayList<>();
+        this.locationHistory = new ArrayList<>();
+        this.favLocations = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,4 +66,11 @@ public class User {
     public void setStations(Station station) {
         this.stations.add(new Station(station));
     }
+
+    public void addLocation(Location location){
+        myLocations.add(location);
+        locationHistory.add(location);
+    }
+
+
 }

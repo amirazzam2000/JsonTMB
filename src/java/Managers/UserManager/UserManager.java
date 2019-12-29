@@ -1,7 +1,9 @@
 package Managers.UserManager;
 
+import DataModel.LocationData.Location;
 import DataModel.TransportationData.Station;
 import DataModel.User.User;
+import Managers.Location.LocationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,16 @@ public class UserManager {
         users.get(0).setStations(station);
     }
 
+    public boolean createNewLocation(float latitude, float longitude, String description, String name ){
+        if (LocationManager.checkCoordinates(latitude, longitude)){
+            if(LocationManager.checkLocationExists(latitude, longitude)){
+                Location aux = new Location(name, longitude, latitude, description);
+                users.get(0).addLocation(aux);
+                LocationManager.add(aux);
 
+            }
+        }
+        return false;
+    }
 
 }
