@@ -15,6 +15,7 @@ public class UI {
     }
 
     public static void printMainMenu(){
+        System.out.println();
         System.out.println("1. User Management");
         System.out.println("2. Search locations");
         System.out.println("3. User Management");
@@ -25,6 +26,7 @@ public class UI {
         System.out.println("Select an option: ");
     }
     public static void printOption1Menu(){
+        System.out.println();
         System.out.println("a) My Locations");
         System.out.println("b) Location History");
         System.out.println("c) My routes");
@@ -33,5 +35,9 @@ public class UI {
         System.out.println("f) Back to the principal menu");
         System.out.println();
         System.out.println("Select an option: ");
+    }
+
+    public static void printErrorMenu(){
+        System.out.println("'ERROR: Invalid option'"+ System.lineSeparator() + "Please choose an option from the menu"+ System.lineSeparator());
     }
 }
