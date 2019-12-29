@@ -70,9 +70,16 @@ public class UI {
     }
 
     public void printLocationHistory(ArrayList<Location> LocationHistory){
-        for(int i = LocationHistory.size() - 1; i >= 0; i--){
-
+        System.out.println("Searched locations: ");
+        if(LocationHistory != null){
+            for(int i = LocationHistory.size() - 1; i >= 0; i--){
+                System.out.println("-" + LocationHistory.get(i).getName());
+            }
         }
+        else{
+            System.out.println("You have not searched for any locations!" + System.lineSeparator() + "To search for one, access option 2 in the principal menu.");
+        }
+
     }
 
 
