@@ -78,7 +78,7 @@ public class UI {
         }
     }
 
-    public void printLocationHistory(ArrayList<Location> LocationHistory){
+    public static void printLocationHistory(ArrayList<Location> LocationHistory){
         System.out.println("Searched locations: ");
         if(LocationHistory != null){
             for(int i = LocationHistory.size() - 1; i >= 0; i--){
@@ -91,6 +91,14 @@ public class UI {
 
     }
 
+    public static void printSearchedLocation(Location location){
+        if(location == null){
+
+        }
+        else{
+
+        }
+    }
 
 
 }
