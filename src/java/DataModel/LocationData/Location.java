@@ -11,4 +11,38 @@ public class Location {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    public float[] getCoordinates() {
+        return coordinates;
+    }
+
+    public float getLatitude() {
+        return coordinates[0];
+    }
+
+    public float getLongitude() {
+        return coordinates[1];
+    }
+
+
+    public void setCoordinates(float[] coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

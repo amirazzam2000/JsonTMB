@@ -5,11 +5,11 @@ import DataModel.LocationData.Location;
 import java.util.ArrayList;
 
 public class LocationManager {
-    ArrayList<Location> locations;
+    private static ArrayList<Location> locations;
 
 
     public LocationManager() {
-        this.locations = new ArrayList<>();
+        locations = new ArrayList<>();
     }
 
     public void add(Location location){
@@ -20,4 +20,15 @@ public class LocationManager {
         return (latitude >= -180 && latitude <= 180) && (longitude >= -90 &&  longitude <= 90);
 
     }
+
+    public static boolean checkLocationExists(float latitude, float longitude){
+        for(Location location : locations){
+            if(location.getLatitude() == latitude && location.getLongitude() == longitude){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
