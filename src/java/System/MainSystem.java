@@ -105,6 +105,9 @@ public class MainSystem {
                     break;
                 case 2:
                     System.out.println("Enter the name of a location: ");
+                    scanner = new Scanner(System.in);
+                    Location location = LocationManager.searchLocations(scanner.nextLine());
+                    UI.printSearchedLocation(location);
                     break;
                 case 3:
                     Location destination = new Location();
