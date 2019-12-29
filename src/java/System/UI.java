@@ -21,6 +21,11 @@ public class UI {
 
     }
 
+    public static void printRouteDestArrivalError(){
+        System.out.println("Error! You must enter \"d\" or \"a\"!.");
+
+    }
+
     public static void printInfoValidMessage(){
         System.out.println("The information has been successfully registered!");
     }

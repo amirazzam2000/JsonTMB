@@ -6,9 +6,9 @@ public class Route {
     char DepartureOrArrival;
     String day;
     String hour;
-    String maxWalkingDistance;
+    float maxWalkingDistance;
 
-    public Route(String origin, String destination, char departureOrArrival, String day, String hour, String maxWalkingDistance) {
+    public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance) {
         this.origin = origin;
         this.destination = destination;
         DepartureOrArrival = departureOrArrival;
@@ -22,7 +22,7 @@ public class Route {
         this.destination = null;
         this.day = null;
         this.hour = null;
-        this.maxWalkingDistance = null;
+        this.maxWalkingDistance = 0;
     }
 
     public String getOrigin() {
@@ -65,11 +65,11 @@ public class Route {
         this.hour = hour;
     }
 
-    public String getMaxWalkingDistance() {
+    public float getMaxWalkingDistance() {
         return maxWalkingDistance;
     }
 
-    public void setMaxWalkingDistance(String maxWalkingDistance) {
+    public void setMaxWalkingDistance(float maxWalkingDistance) {
         this.maxWalkingDistance = maxWalkingDistance;
     }
 }

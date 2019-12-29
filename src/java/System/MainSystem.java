@@ -1,6 +1,7 @@
 package System;
 
 import DataModel.LocationData.Location;
+import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
@@ -110,17 +111,84 @@ public class MainSystem {
                     UI.printSearchedLocation(location);
                     break;
                 case 3:
-                    Location destination = new Location();
+                    Location originLocation = new Location();
+                    Location destLocation = new Location();
+                    Route route = new Route();
 
-                    System.out.println("Origin? (lat,lon/name location)");
+                    flag = true;
+                    do {
+                        System.out.println("Origin? (lat,lon/name location)");
+                        String origin = scanner.nextLine();
+                        if (origin.charAt(0) >= '0' && origin.charAt(0) <= '9') {
+                            String[] coords = null;
+                            coords = origin.split(",");
+                            flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
+                        } else {
+                            originLocation = LocationManager.searchLocations(origin);
+                            if (originLocation != null) {
+                                origin = LocationManager.lanLogToString(originLocation);
+                                flag = false;
+                            } else {
+                                UI.printRouteLocationError();
+                            }
+                        }
 
-                    destination = LocationManager.searchLocations(scanner.nextLine());
-                    if(destination != null){
-                        System.out.println();
-                    }
-                    else{
-                        UI.printRouteLocationError();
-                    }
+                        route.setOrigin(origin);
+
+                    }while(flag);
+
+                    flag = true;
+                    do {
+                        System.out.println("Destination? (lat,lon/name location)");
+                        String destination = scanner.nextLine();
+
+
+                        if (destination.charAt(0) >= '0' && destination.charAt(0) <= '9') {
+                            String[] coords = null;
+                            coords = destination.split(",");
+                            flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
+                        } else {
+                            destLocation = LocationManager.searchLocations(destination);
+                            if (destLocation != null) {
+                                destination = LocationManager.lanLogToString(destLocation);
+                                flag = false;
+                            } else {
+                                UI.printRouteLocationError();
+                            }
+                        }
+
+                        route.setDestination(destination);
+
+                    }while(flag);
+
+
+
+                    flag = true;
+
+                    do{
+                        System.out.println("Departure or arrival? (d/a)");
+                        String destOrArrivalOption = scanner.nextLine();
+
+                        if(destOrArrivalOption.equalsIgnoreCase("d") || destOrArrivalOption.equalsIgnoreCase("a")){
+                            route.setDepartureOrArrival(destOrArrivalOption.charAt(0));
+                            flag = false;
+                        }
+                        else{
+                            UI.printRouteDestArrivalError();
+                        }
+
+                    }while(flag);
+
+                    System.out.println("Day? (MM-DD-YYYY)");
+                    route.setDay(scanner.nextLine());
+
+                    System.out.println("Hour? (HH:MMam/HH:MMpm)");
+                    route.setHour(scanner.nextLine());
+
+                    System.out.println("Maximum walking distance in meters?");
+                    route.setMaxWalkingDistance(scanner.nextFloat());
+
+
 
                     break;
                 case 4:

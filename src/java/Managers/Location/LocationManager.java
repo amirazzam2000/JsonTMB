@@ -40,12 +40,19 @@ public class LocationManager {
     }
 
     public static Location searchLocations(String name){
+
         for(Location location : locations){
-            if(name.compareToIgnoreCase(location.getName()) == 0){
+            if(name.compareToIgnoreCase(location.getName()) == 0 ){
                 return location;
             }
         }
         return null;
+    }
+
+    public static String  lanLogToString(Location location){
+        StringBuilder output = new StringBuilder();
+        output.append(location.getLatitude()).append(",").append(location.getLongitude());
+        return output.toString() ;
     }
 
 
