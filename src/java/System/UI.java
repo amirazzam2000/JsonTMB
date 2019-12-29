@@ -54,7 +54,6 @@ public class UI {
                 System.out.println("- Length: " + location.getLongitude());
                 System.out.println("- Latitude: " + location.getName());
                 System.out.println("- Description: " + location.getDescription() + System.lineSeparator());
-
             }
         }
         else{

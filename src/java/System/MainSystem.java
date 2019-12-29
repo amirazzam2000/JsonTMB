@@ -38,20 +38,24 @@ public class MainSystem {
                     do {
                         UI.printOption1Menu();
                         secondOption = scanner.next();
-                        switch (secondOption.toLowerCase()) {
+                        switch (secondOption) {
                             case "a":
-                                UI.printMyLocationOption(users.getMyLocation());
-
+                            case "A":
                                 break;
                             case "b":
+                            case "B":
                                 break;
                             case "c":
+                            case "C":
                                 break;
                             case "d":
+                            case "D":
                                 break;
                             case "e":
+                            case "E":
                                 break;
                             case "f":
+                            case "F":
                                 break;
                             default:
                                 UI.printErrorMenu();
