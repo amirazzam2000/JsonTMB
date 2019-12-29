@@ -1,6 +1,7 @@
 package System;
 
 import DataModel.LocationData.Location;
+import DataModel.TransportationData.Station;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
 
@@ -89,6 +90,7 @@ public class MainSystem {
                             case "d":
                                 break;
                             case "e":
+                                System.out.println("Stations inaugurated in " + users.getYear() + ":");
                                 break;
                             case "f":
                                 break;
@@ -99,6 +101,7 @@ public class MainSystem {
                     }while(secondOption.compareToIgnoreCase("f") != 0);
                     break;
                 case 2:
+                    System.out.println("Enter the name of a location: ");
                     break;
                 case 3:
                     break;
