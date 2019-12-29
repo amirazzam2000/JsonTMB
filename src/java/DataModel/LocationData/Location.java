@@ -5,6 +5,11 @@ public class Location {
     float[] coordinates;
     String description;
 
+    public Location(){
+        name = null;
+        coordinates = new float[2];
+        description = null;
+    }
     public Location(String name, float[] coordinates, String description) {
         this.name = name;
         this.coordinates = coordinates;
@@ -38,6 +43,14 @@ public class Location {
 
     public float getLongitude() {
         return coordinates[1];
+    }
+
+    public void setLatitude(float latitude) {
+        this.coordinates[0] = latitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.coordinates[1] = longitude;
     }
 
 

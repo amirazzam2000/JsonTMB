@@ -30,6 +30,14 @@ public class LocationManager {
         return false;
     }
 
+    public static boolean checkLocationNameExists(String name){
+        for(Location location : locations){
+            if(name.compareToIgnoreCase(location.getName()) != 0){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
