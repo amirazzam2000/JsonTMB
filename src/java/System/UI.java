@@ -11,7 +11,7 @@ public class UI {
     }
 
     public static void printUserWelcomeMessage(String username){
-        System.out.println("The information has been successfully registered!");
+        System.out.println("Welcome back to TMBJson " + username + "!");
     }
 
     public static void printMainMenu(){

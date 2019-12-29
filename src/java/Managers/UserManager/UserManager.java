@@ -45,9 +45,6 @@ public class UserManager {
         users.get(0).setStations(station);
     }
 
-    public boolean createNewLocation(){
 
-        return true;
-    }
 
 }
