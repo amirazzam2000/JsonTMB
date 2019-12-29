@@ -46,6 +46,14 @@ public class UI {
         System.out.println("'ERROR: Invalid option'"+ System.lineSeparator() + "Please choose an option from the menu"+ System.lineSeparator());
     }
 
+    public static void printInputErrorYN(){
+        System.out.println("Error! You must enter \"yes\" or \"no\"." + System.lineSeparator());
+    }
+
+    public static void printLocationExistsError(){
+        System.out.println("Error! This location already exists." + System.lineSeparator());
+    }
+
     public static void printMyLocationOption(ArrayList<Location> locations){
         String createOption;
         if(locations != null){
@@ -60,5 +68,13 @@ public class UI {
             System.out.println("You don't have any location created.");
         }
     }
+
+    public void printLocationHistory(ArrayList<Location> LocationHistory){
+        for(int i = LocationHistory.size() - 1; i >= 0; i--){
+
+        }
+    }
+
+
 
 }

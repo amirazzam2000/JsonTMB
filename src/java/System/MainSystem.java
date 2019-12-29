@@ -43,6 +43,7 @@ public class MainSystem {
                                 UI.printMyLocationOption(users.getMyLocation());
                                 break;
                             case "b":
+
                                 break;
                             case "c":
                                 break;
