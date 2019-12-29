@@ -4,6 +4,8 @@ import DataModel.LocationData.Hotel;
 import DataModel.LocationData.Location;
 import DataModel.LocationData.Monument;
 import DataModel.LocationData.Restaurant;
+import DataModel.TransportationData.Route;
+import DataModel.TransportationData.RouteJourney;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +40,7 @@ public class UI {
         System.out.println();
         System.out.println("1. User Management");
         System.out.println("2. Search locations");
-        System.out.println("3. User Management");
+        System.out.println("3. Plan Route");
         System.out.println("4. Bus wait time");
         System.out.println("5. Exit");
         System.out.println();
@@ -128,6 +130,40 @@ public class UI {
                 }
             }
         }
+    }
+
+    public static void printRoute(Route route){
+        int i = route.getShortestRoute();
+
+        System.out.println("Time taken: " +  Math.round(route.getItineraries().get(i).getDuration() / 60.0) + " min");
+
+        for (int j = 0; j < route.getItineraries().get(i).getJourneys().size(); j++) {
+            if(route.getItineraries().get(i).getJourneys().get(j).getLineOrStreet() != null)
+                System.out.print(route.getItineraries().get(i).getJourneys().get(j ).getLineOrStreet() + " ");
+            if (j == 0)
+                System.out.print(route.getItineraries().get(i).getJourneys().get(j).getOrigin());
+
+            else if( route.getItineraries().get(i).getJourneys().get(j - 1).getMode().compareToIgnoreCase("walk") == 0 )
+                System.out.print( route.getItineraries().get(i).getJourneys().get(j).getOrigin() + " (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") ");
+
+
+            if(route.getItineraries().get(i).getJourneys().get(j).getMode().compareToIgnoreCase("walk") == 0){
+                System.out.println();
+                System.out.println("|");
+                System.out.println("Walk " + Math.round ( route.getItineraries().get(i).getJourneys().get(j).getTime() / 60.0) +" min");
+                System.out.println("|");
+
+                //System.out.print("|" + route.getItineraries().get(i).getJourneys().get(j).getDestination() + "| (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") ");
+            }
+            else {
+                System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + " (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") " + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
+            }
+            //j++;
+
+
+        }
+        System.out.println(route.getItineraries().get(i).getJourneys().get(route.getItineraries().get(i).getJourneys().size() -1 ).getDestination());
+
     }
 
 

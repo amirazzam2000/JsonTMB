@@ -21,3 +21,10 @@ public class Test {
             JsonRouteReader.readRoute(JsonString);
     }
 }
+/*
+* 41.408013, 2.130027
+* Plaça Catalunya
+* 12-30-2019
+* 12:00pm
+*
+* */

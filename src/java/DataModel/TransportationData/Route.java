@@ -5,20 +5,31 @@ import java.util.ArrayList;
 public class Route {
     private String origin;
     private String destination;
-    private char DepartureOrArrival;
+    private char departureOrArrival;
     private String day;
     private String hour;
+
     private float maxWalkingDistance;
     private ArrayList<Itinerary> itineraries;
 
     public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance, ArrayList<Itinerary> itineraries) {
         this.origin = origin;
         this.destination = destination;
-        DepartureOrArrival = departureOrArrival;
+        this.departureOrArrival = departureOrArrival;
         this.day = day;
         this.hour = hour;
         this.maxWalkingDistance = maxWalkingDistance;
         this.itineraries = itineraries;
+    }
+
+    public Route(Route route) {
+        this.origin = route.origin;
+        this.destination = route.destination;
+        this.departureOrArrival = route.departureOrArrival;
+        this.day = route.day;
+        this.hour = route.hour;
+        this.maxWalkingDistance = route.maxWalkingDistance;
+        this.itineraries = route.itineraries;
     }
 
     public Route() {
@@ -59,11 +70,11 @@ public class Route {
     }
 
     public char getDepartureOrArrival() {
-        return DepartureOrArrival;
+        return departureOrArrival;
     }
 
     public void setDepartureOrArrival(char departureOrArrival) {
-        DepartureOrArrival = departureOrArrival;
+        this.departureOrArrival = departureOrArrival;
     }
 
     public String getDay() {
@@ -88,5 +99,23 @@ public class Route {
 
     public void setMaxWalkingDistance(float maxWalkingDistance) {
         this.maxWalkingDistance = maxWalkingDistance;
+    }
+
+    public int getShortestRoute(){
+        int i = 0;
+        int shortest = Integer.MAX_VALUE;
+        int time ;
+        for (int j = 0; j < itineraries.size() ; j++) {
+            time = 0;
+            for (RouteJourney journey: itineraries.get(j).getJourneys()
+                 ) {
+                time += journey.time;
+            }
+            if (time < shortest){
+                shortest = time;
+                i = j;
+            }
+        }
+        return i;
     }
 }

@@ -2,6 +2,7 @@ package DataModel.User;
 
 import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
+import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class User {
     ArrayList<Location> myLocations;
     ArrayList<Location> locationHistory;
     ArrayList<FavLocation> favLocations;
+    ArrayList<Route> routes;
 
 
 

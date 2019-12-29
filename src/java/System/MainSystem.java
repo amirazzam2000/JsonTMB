@@ -1,8 +1,10 @@
 package System;
 
+import API.WebManager;
 import DataModel.LocationData.Location;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
+import JsonParsing.Transportation.JsonRouteReader;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
 
@@ -114,6 +116,7 @@ public class MainSystem {
                     Location originLocation = new Location();
                     Location destLocation = new Location();
                     Route route = new Route();
+                    scanner = new Scanner(System.in);
 
                     flag = true;
                     do {
@@ -188,6 +191,13 @@ public class MainSystem {
                     System.out.println("Maximum walking distance in meters?");
                     route.setMaxWalkingDistance(scanner.nextFloat());
 
+                    String JsonString;
+                    JsonString = WebManager.callRoute(route);
+                    //System.out.println(JsonString);
+                    if (JsonString != null)
+                        route.setItineraries(JsonRouteReader.readRoute(JsonString).getItineraries());
+
+                    UI.printRoute(route);
 
 
                     break;
