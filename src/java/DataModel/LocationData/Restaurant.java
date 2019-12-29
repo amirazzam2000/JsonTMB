@@ -10,4 +10,11 @@ public class Restaurant extends Location {
         this.characteristics = characteristics;
     }
 
+    public String[] getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(String[] characteristics) {
+        this.characteristics = characteristics;
+    }
 }

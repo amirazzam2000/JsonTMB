@@ -2,8 +2,11 @@ package System;
 
 import DataModel.LocationData.Hotel;
 import DataModel.LocationData.Location;
+import DataModel.LocationData.Monument;
+import DataModel.LocationData.Restaurant;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UI {
@@ -12,6 +15,12 @@ public class UI {
         System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
 
     }
+
+    public static void printRouteLocationError(){
+        System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
+
+    }
+
     public static void printInfoValidMessage(){
         System.out.println("The information has been successfully registered!");
     }
@@ -94,12 +103,25 @@ public class UI {
 
     public static void printSearchedLocation(Location location){
         if(location == null){
-
+            System.out.println("Sorry, there is no location with this name.");
         }
         else{
-            System.out.println("postion");
-            System.out.println("dis");
-            if (location instanceof Hotel){}
+            System.out.println(System.lineSeparator() + "Position: " + location.getLatitude() + ", " + location.getLongitude());
+            System.out.println("Description: " + System.lineSeparator() + location.getDescription());
+            if (location instanceof Hotel){
+                System.out.println("Stars: " + ((Hotel) location).getStars());
+            }
+            if (location instanceof Monument){
+                System.out.println("Architect: " + ((Monument) location).getArchitect());
+                System.out.println("Inauguration: " + ((Monument) location).getInauguration());
+            }
+            if (location instanceof Restaurant){
+                System.out.println("Characteristics: ");
+
+                for(int i = 0; i < ((Restaurant) location).getCharacteristics().length; i++){
+                    System.out.println("- " + ((Restaurant) location).getCharacteristics()[i]);
+                }
+            }
         }
     }
 

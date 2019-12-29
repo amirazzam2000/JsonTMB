@@ -11,4 +11,20 @@ public class Monument extends Location {
         this.architect = architect;
         this.inauguration = inauguration;
     }
+
+    public String getArchitect() {
+        return architect;
+    }
+
+    public void setArchitect(String architect) {
+        this.architect = architect;
+    }
+
+    public int getInauguration() {
+        return inauguration;
+    }
+
+    public void setInauguration(int inauguration) {
+        this.inauguration = inauguration;
+    }
 }

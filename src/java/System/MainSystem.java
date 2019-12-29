@@ -107,6 +107,18 @@ public class MainSystem {
                     System.out.println("Enter the name of a location: ");
                     break;
                 case 3:
+                    Location destination = new Location();
+
+                    System.out.println("Origin? (lat,lon/name location)");
+
+                    destination = LocationManager.searchLocations(scanner.nextLine());
+                    if(destination != null){
+                        System.out.println();
+                    }
+                    else{
+                        UI.printRouteLocationError();
+                    }
+
                     break;
                 case 4:
                     break;
