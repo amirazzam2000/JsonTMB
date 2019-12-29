@@ -17,15 +17,17 @@ public class JsonRouteReader {
             return null; // convert to exception
         }
         else{
-            for (JsonElement itinerary: jsonRoute.get("itineraries").getAsJsonArray()) {
+            for (JsonElement itinerary: jsonRoute.get("plan").getAsJsonObject().get("itineraries").getAsJsonArray()) {
                 Itinerary auxItinerary = new Itinerary();
                 auxItinerary.setDuration(itinerary.getAsJsonObject().get("duration").getAsInt());
-                for (JsonElement leg: itinerary.getAsJsonObject().get("leg").getAsJsonArray()) {
+                for (JsonElement leg: itinerary.getAsJsonObject().get("legs").getAsJsonArray()) {
                     RouteJourney auxJourney = new RouteJourney();
                     auxJourney.setDestination(leg.getAsJsonObject().get("to").getAsJsonObject().get("name").getAsString());
+                    auxJourney.setOrigin(leg.getAsJsonObject().get("from").getAsJsonObject().get("name").getAsString());
                     auxJourney.setDistance( leg.getAsJsonObject().get("distance").getAsInt());
                     auxJourney.setTime(leg.getAsJsonObject().get("duration").getAsInt());
                     auxJourney.setMode(leg.getAsJsonObject().get("mode").getAsString());
+                    auxJourney.setLineOrStreet(leg.getAsJsonObject().get("route").getAsString());
 
                     auxItinerary.add(auxJourney);
                 }

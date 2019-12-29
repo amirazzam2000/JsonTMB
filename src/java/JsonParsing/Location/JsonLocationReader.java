@@ -37,8 +37,8 @@ public class JsonLocationReader {
                 // read each location in the json object and store it in its corresponding class
                 for (JsonElement jsonObject :json.getAsJsonObject().get("locations").getAsJsonArray()) {
                     float[] coordinates = new float[2];
-                    coordinates[0] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
-                    coordinates[1] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
+                    coordinates[1] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
+                    coordinates[0] = jsonObject.getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
 
                     // if the location has an "architect" then it's a Monument so, save it in the monument class
                     if (jsonObject.getAsJsonObject().has("architect")){

@@ -1,12 +1,30 @@
 package DataModel.TransportationData;
 
 public class RouteJourney {
+    String origin;
+
     String destination;
+
     float time;
     int distance;
     String mode;
+    String lineOrStreet;
 
+    public String getOrigin() {
+        return origin;
+    }
 
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getLineOrStreet() {
+        return lineOrStreet;
+    }
+
+    public void setLineOrStreet(String lineOrStreet) {
+        this.lineOrStreet = lineOrStreet;
+    }
 
     public String getDestination() {
         return destination;
