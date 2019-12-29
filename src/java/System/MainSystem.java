@@ -41,7 +41,6 @@ public class MainSystem {
                         switch (secondOption.toLowerCase()) {
                             case "a":
                                 UI.printMyLocationOption(users.getMyLocation());
-
                                 break;
                             case "b":
                                 break;
