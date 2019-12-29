@@ -39,6 +39,14 @@ public class LocationManager {
         return false;
     }
 
+    public Location searchLocations(String name){
+        for(Location location : locations){
+            if(name.compareToIgnoreCase(location.getName()) == 0){
+                return location;
+            }
+        }
+        return null;
+    }
 
 
 }

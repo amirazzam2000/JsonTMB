@@ -7,4 +7,12 @@ public class Hotel extends Location {
         super(name, coordinates, description);
         this.stars = stars;
     }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
 }
