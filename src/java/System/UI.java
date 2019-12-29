@@ -1,5 +1,10 @@
 package System;
 
+import DataModel.LocationData.Location;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class UI {
 
     public static void printWelcomeMessage(){
@@ -40,4 +45,21 @@ public class UI {
     public static void printErrorMenu(){
         System.out.println("'ERROR: Invalid option'"+ System.lineSeparator() + "Please choose an option from the menu"+ System.lineSeparator());
     }
+
+    public static void printMyLocationOption(ArrayList<Location> locations){
+        String createOption;
+        if(locations != null){
+            for(Location location: locations){
+                System.out.println("Location Name: " + location.getName());
+                System.out.println("- Length: " + location.getLongitude());
+                System.out.println("- Latitude: " + location.getName());
+                System.out.println("- Description: " + location.getDescription() + System.lineSeparator());
+
+            }
+        }
+        else{
+            System.out.println("You don't have any location created.");
+        }
+    }
+
 }
