@@ -72,5 +72,7 @@ public class User {
         locationHistory.add(location);
     }
 
-
+    public ArrayList<Location> getMyLocations() {
+        return myLocations;
+    }
 }

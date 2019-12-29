@@ -21,9 +21,9 @@ public class LocationManager {
 
     }
 
-    public static boolean checkLocationExists(float latitude, float longitude){
+    public static boolean checkLocationExists(Location loc){
         for(Location location : locations){
-            if(location.getLatitude() == latitude && location.getLongitude() == longitude){
+            if(location.getLatitude() == loc.getLatitude() && location.getLongitude() == loc.getLongitude() && loc.getName().compareToIgnoreCase(location.getName()) != 0){
                 return true;
             }
         }

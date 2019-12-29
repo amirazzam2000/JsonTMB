@@ -15,6 +15,10 @@ public class UserManager {
         this.users.add(new User());
     }
 
+    public ArrayList<Location> getMyLocation(){
+        return users.get(0).getMyLocations();
+    }
+
     public String getName() {
         return users.get(0).getName();
     }
@@ -49,11 +53,10 @@ public class UserManager {
 
     public boolean createNewLocation(float latitude, float longitude, String description, String name ){
         if (LocationManager.checkCoordinates(latitude, longitude)){
-            if(LocationManager.checkLocationExists(latitude, longitude)){
-                Location aux = new Location(name, longitude, latitude, description);
+            Location aux = new Location(name, longitude, latitude, description);
+            if(LocationManager.checkLocationExists(aux)){
                 users.get(0).addLocation(aux);
                 LocationManager.add(aux);
-
             }
         }
         return false;
