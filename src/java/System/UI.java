@@ -1,5 +1,6 @@
 package System;
 
+import DataModel.LocationData.Hotel;
 import DataModel.LocationData.Location;
 
 import java.util.ArrayList;
@@ -96,7 +97,9 @@ public class UI {
 
         }
         else{
-
+            System.out.println("postion");
+            System.out.println("dis");
+            if (location instanceof Hotel){}
         }
     }
 
