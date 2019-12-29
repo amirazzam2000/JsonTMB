@@ -66,7 +66,7 @@ public class UI {
     public static void printMyLocationOption(ArrayList<Location> locations){
         if(locations.size() != 0){
             for(Location location: locations){
-                System.out.println("Location Name: " + location.getName());
+                System.out.println("Location Name : " + location.getName());
                 System.out.println("- Length: " + location.getLongitude());
                 System.out.println("- Latitude: " + location.getName());
                 System.out.println("- Description: " + location.getDescription() + System.lineSeparator());
