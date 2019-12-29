@@ -24,6 +24,10 @@ public class JsonRouteReader {
                     RouteJourney auxJourney = new RouteJourney();
                     auxJourney.setDestination(leg.getAsJsonObject().get("to").getAsJsonObject().get("name").getAsString());
                     auxJourney.setOrigin(leg.getAsJsonObject().get("from").getAsJsonObject().get("name").getAsString());
+                    if (leg.getAsJsonObject().get("from").getAsJsonObject().has("stopCode"))
+                        auxJourney.setStopCode(leg.getAsJsonObject().get("from").getAsJsonObject().get("stopCode").getAsString());
+                    else
+                        auxJourney.setStopCode(null);
                     auxJourney.setDistance( leg.getAsJsonObject().get("distance").getAsInt());
                     auxJourney.setTime(leg.getAsJsonObject().get("duration").getAsInt());
                     auxJourney.setMode(leg.getAsJsonObject().get("mode").getAsString());

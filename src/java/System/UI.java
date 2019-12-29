@@ -144,8 +144,9 @@ public class UI {
                 System.out.print(route.getItineraries().get(i).getJourneys().get(j).getOrigin());
 
             else if( route.getItineraries().get(i).getJourneys().get(j - 1).getMode().compareToIgnoreCase("walk") == 0 )
-                System.out.print( route.getItineraries().get(i).getJourneys().get(j).getOrigin() + " (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") ");
-
+                System.out.print( route.getItineraries().get(i).getJourneys().get(j).getOrigin() );
+            if (route.getItineraries().get(i).getJourneys().get(j).getStopCode() != null)
+                System.out.print(" (" +  route.getItineraries().get(i).getJourneys().get(j).getStopCode() + ") ");
 
             if(route.getItineraries().get(i).getJourneys().get(j).getMode().compareToIgnoreCase("walk") == 0){
                 System.out.println();
@@ -156,7 +157,11 @@ public class UI {
                 //System.out.print("|" + route.getItineraries().get(i).getJourneys().get(j).getDestination() + "| (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") ");
             }
             else {
-                System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + " (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") " + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
+                if (j < (route.getItineraries().get(i).getJourneys().size() -1) && route.getItineraries().get(i).getJourneys().get(j + 1).getStopCode() != null)
+                     System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + " (" + route.getItineraries().get(i).getJourneys().get(j + 1).getStopCode() + ") " + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
+                else
+                    System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
+
             }
             //j++;
 

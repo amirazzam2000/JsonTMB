@@ -2,9 +2,10 @@ package DataModel.TransportationData;
 
 public class RouteJourney {
     String origin;
+    String stopCode;
+
 
     String destination;
-
     float time;
     int distance;
     String mode;
@@ -56,6 +57,15 @@ public class RouteJourney {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+
+    public String getStopCode() {
+        return stopCode;
+    }
+
+    public void setStopCode(String stopCode) {
+        this.stopCode = stopCode;
     }
 
     public RouteJourney(){
