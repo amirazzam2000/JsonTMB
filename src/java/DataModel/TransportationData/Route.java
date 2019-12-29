@@ -1,5 +1,7 @@
 package DataModel.TransportationData;
 
+import java.util.ArrayList;
+
 public class Route {
     private String origin;
     private String destination;
@@ -7,14 +9,16 @@ public class Route {
     private String day;
     private String hour;
     private float maxWalkingDistance;
+    private ArrayList<Itinerary> itineraries;
 
-    public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance) {
+    public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance, ArrayList<Itinerary> itineraries) {
         this.origin = origin;
         this.destination = destination;
         DepartureOrArrival = departureOrArrival;
         this.day = day;
         this.hour = hour;
         this.maxWalkingDistance = maxWalkingDistance;
+        this.itineraries = itineraries;
     }
 
     public Route() {
@@ -23,6 +27,19 @@ public class Route {
         this.day = null;
         this.hour = null;
         this.maxWalkingDistance = 0;
+        itineraries = new ArrayList<>();
+    }
+
+    public void addItineraries(Itinerary itinerary){
+        itineraries.add(itinerary);
+    }
+
+    public ArrayList<Itinerary> getItineraries() {
+        return itineraries;
+    }
+
+    public void setItineraries(ArrayList<Itinerary> itineraries) {
+        this.itineraries = itineraries;
     }
 
     public String getOrigin() {
