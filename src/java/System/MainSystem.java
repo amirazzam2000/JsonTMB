@@ -42,7 +42,7 @@ public class MainSystem {
                 case 1 :
                     do {
                         UI.printOption1Menu();
-                        secondOption = scanner.next();
+                        secondOption = scanner.nextLine();
                         switch (secondOption.toLowerCase()) {
                             case "a":
                                 UI.printMyLocationOption(users.getMyLocation());
