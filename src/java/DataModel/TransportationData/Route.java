@@ -1,12 +1,12 @@
 package DataModel.TransportationData;
 
 public class Route {
-    String origin;
-    String destination;
-    char DepartureOrArrival;
-    String day;
-    String hour;
-    float maxWalkingDistance;
+    private String origin;
+    private String destination;
+    private char DepartureOrArrival;
+    private String day;
+    private String hour;
+    private float maxWalkingDistance;
 
     public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance) {
         this.origin = origin;
