@@ -50,6 +50,15 @@ public class UI {
         System.out.println("Error! You must enter \"yes\" or \"no\"." + System.lineSeparator());
     }
 
+    public static void printErrorCoordinates(){
+        System.out.println("Error! These coordinates are not valid." + System.lineSeparator());
+    }
+
+    public static void printErrorLocationNameExists(){
+        System.out.println("Error! This location name already exists." + System.lineSeparator());
+    }
+
+
     public static void printLocationExistsError(){
         System.out.println("Error! This location already exists." + System.lineSeparator());
     }
