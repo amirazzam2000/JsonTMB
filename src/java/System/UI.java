@@ -15,6 +15,12 @@ public class UI {
         System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
 
     }
+
+    public static void printRouteLocationError(){
+        System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
+
+    }
+
     public static void printInfoValidMessage(){
         System.out.println("The information has been successfully registered!");
     }
