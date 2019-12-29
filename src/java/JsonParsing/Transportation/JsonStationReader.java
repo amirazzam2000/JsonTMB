@@ -1,11 +1,11 @@
 package JsonParsing.Transportation;
 
 import DataModel.TransportationData.Station;
-import Managers.Transportation.StationManger;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import java.util.ArrayList;
 
 public class JsonStationReader {
 
@@ -14,8 +14,8 @@ public class JsonStationReader {
      *
      * @return   an array of all the Stations contained in the Station String returned by the API
      * */
-    public static StationManger readStations(String input){
-        StationManger stations = new StationManger();
+    public static ArrayList<Station> readStations(String input){
+        ArrayList<Station> stations = new ArrayList<>();
         Station auxStation = new Station();
         JsonElement json = JsonParser.parseString(input);
         JsonObject jsonStations = json.getAsJsonObject();

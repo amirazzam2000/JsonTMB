@@ -1,5 +1,7 @@
 package DataModel.User;
 
+import DataModel.LocationData.FavLocation;
+import DataModel.LocationData.Location;
 import DataModel.TransportationData.Station;
 
 import java.util.ArrayList;
@@ -10,9 +12,14 @@ public class User {
     String name;
     String email;
     int year;
-    List<Station> stations;
+    ArrayList<Station> stations;
+    ArrayList<Location> myLocations;
+    ArrayList<Location> locationHistory;
+    ArrayList<FavLocation> favLocations;
 
-    public User(String name, String email, int year, List<Station> stations) {
+
+
+    public User(String name, String email, int year, ArrayList<Station> stations) {
         this.name = name;
         this.email = email;
         this.year = year;
