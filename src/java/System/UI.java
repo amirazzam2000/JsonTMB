@@ -7,6 +7,7 @@ import DataModel.LocationData.Restaurant;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.RouteJourney;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -172,4 +173,22 @@ public class UI {
     }
 
 
+    public static void printMyRoutes(ArrayList<Route> myRoutes) {
+        if (myRoutes != null && myRoutes.size() > 0){
+            int i = 1;
+            for (Route route: myRoutes) {
+                System.out.println("->Route " + i++ + ":");
+                System.out.println("-Origin: " + route.getOrigin());
+                System.out.println("-Destination: " + route.getDestination());
+                System.out.println("-Start day: " + route.getDay() + " at " + route.getHour());
+                System.out.println("-Max walking distance: " + route.getMaxWalkingDistance());
+                System.out.println("-Fastest combination: " + System.lineSeparator());
+
+                printRoute(route);
+            }
+        }
+        else{
+            System.out.println("You have not made any route :(" + System.lineSeparator() + "To search for one, access option 3 on the principal menu.");
+        }
+    }
 }

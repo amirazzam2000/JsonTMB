@@ -92,6 +92,7 @@ public class MainSystem {
                                 UI.printLocationHistory(users.getLocationHistory());
                                 break;
                             case "c":
+                                UI.printMyRoutes(users.getMyRoutes());
                                 break;
                             case "d":
                                 break;

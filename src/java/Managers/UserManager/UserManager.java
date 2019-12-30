@@ -61,6 +61,10 @@ public class UserManager {
         users.get(0).addRoute(route);
     }
 
+    public ArrayList<Route> getMyRoutes(){
+        return users.get(0).getRoutes();
+    }
+
     public void addLocationHistory(Location location){
         users.get(0).addLocationHistory(location);
     }
