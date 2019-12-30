@@ -114,6 +114,28 @@ public class MainSystem {
                     UI.printSearchedLocation(location);
                     if (location != null)
                         users.addLocationHistory(location);
+                        System.out.println("Do you want to save the found location as your favorite? (yes/no)");
+                        String favLocation = scanner.nextLine();
+                        do {
+                            if (favLocation.equalsIgnoreCase("yes") || favLocation.equalsIgnoreCase("no")) {
+                                if (favLocation.equalsIgnoreCase("yes")) {
+                                    String type;
+                                    do {
+                                        System.out.println("Type (home / work / studies / leisure / culture):");
+                                        type = scanner.nextLine();
+                                        flag = type.equalsIgnoreCase("home") || type.equalsIgnoreCase("work") || type.equalsIgnoreCase("studies") || type.equalsIgnoreCase("leisure") || type.equalsIgnoreCase("culture");
+                                        if(!flag){
+                                            UI.printFavLocationTypeError();
+                                        }
+                                        else{
+                                            System.out.println(location.getName() + " has been assigned as a new favorite location.");
+                                        }
+                                    } while (!flag);
+                                }
+                            }
+                            else
+                                UI.printInputErrorYN();
+                        }while(!(favLocation.equalsIgnoreCase("yes") || favLocation.equalsIgnoreCase("no")));
                     break;
                 case 3:
                     Location originLocation = new Location();

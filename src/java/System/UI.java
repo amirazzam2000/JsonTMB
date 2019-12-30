@@ -64,6 +64,14 @@ public class UI {
         System.out.println("'ERROR: Invalid option'"+ System.lineSeparator() + "Please choose an option from the menu"+ System.lineSeparator());
     }
 
+    public static void printAPIParameterError(){
+        System.out.println("Error, there is some wrong parameter :(" + System.lineSeparator());
+    }
+
+    public static void printRouteTransitError(){
+        System.out.println("TMB is doing its best to make the bus and subway make this route in the future." + System.lineSeparator());
+    }
+
     public static void printInputErrorYN(){
         System.out.println("Error! You must enter \"yes\" or \"no\"." + System.lineSeparator());
     }
@@ -80,6 +88,11 @@ public class UI {
     public static void printLocationExistsError(){
         System.out.println("Error! This location already exists." + System.lineSeparator());
     }
+
+    public static void printFavLocationTypeError(){
+        System.out.println("Error! You have to enter \"home\", \"work\", \"studies\", \"leisure\" or \"culture\"." + System.lineSeparator());
+    }
+
 
     public static void printMyLocationOption(ArrayList<Location> locations){
         String createOption;
