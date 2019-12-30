@@ -74,7 +74,7 @@ public class JsonLocationReader {
                                     jsonObject.getAsJsonObject().get("description").getAsString());
                     }
 
-                    locations.add(auxLocation);
+                    LocationManager.add(auxLocation);
 
                 }
 

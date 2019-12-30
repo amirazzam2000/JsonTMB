@@ -1,9 +1,14 @@
 import API.WebManager;
 import DataModel.LocationData.FavLocation;
 import DataModel.TransportationData.Route;
+import DataModel.TransportationData.Station;
+import DataModel.TransportationData.Stop;
 import JsonParsing.Location.JsonLocationReader;
 import JsonParsing.Transportation.JsonRouteReader;
 import JsonParsing.Transportation.JsonStationReader;
+import JsonParsing.Transportation.JsonStopsReader;
+
+import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
@@ -21,7 +26,17 @@ public class Test {
         if (JsonString != null)
             JsonRouteReader.readRoute(JsonString);*/
 
-        System.out.println( FavLocation.calculateDifference(41.408013, 2.130027,41.406850, 2.133705 ));
+       // System.out.println( JsonStationReader.calculateDifference(41.408013, 2.130027,41.418278, 2.140972 ));
+        String JsonString;
+        JsonString = WebManager.callAllStations();
+        ArrayList<Station> stations;
+        if (JsonString != null)
+            stations = JsonStationReader.readFavStations(JsonString,41.408385, 2.130064);
+        JsonString = WebManager.callAllStops();
+        ArrayList<Stop> stops;
+        if (JsonString != null)
+            stops = JsonStopsReader.readFavStops(JsonString,41.408385, 2.130064);
+
     }
 }
 /*

@@ -1,11 +1,14 @@
 package DataModel.TransportationData;
 
-public class Station {
+import java.util.Comparator;
+
+public class Station implements Comparator<Station> {
     float[] coordinates;
     String stationName;
     String stationId;
     String Date;
     String lineName;
+    double distance;
 
     public Station(Station that) {
         this.coordinates = that.coordinates;
@@ -13,6 +16,7 @@ public class Station {
         this.stationId = that.stationId;
         this.Date = that.Date;
         this.lineName = that.lineName;
+        this.distance = that.distance;
     }
     public Station(){
         coordinates = new float[2];
@@ -20,6 +24,14 @@ public class Station {
         stationId = null;
         Date = null;
         lineName = null;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public float[] getCoordinates() {
@@ -60,5 +72,10 @@ public class Station {
 
     public void setLineName(String lineName) {
         this.lineName = lineName;
+    }
+
+    @Override
+    public int compare(Station o1, Station o2) {
+        return (int) (o1.getDistance() * 1000 - o2.getDistance() * 1000 );
     }
 }

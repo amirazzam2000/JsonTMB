@@ -6,6 +6,7 @@ import DataModel.LocationData.Monument;
 import DataModel.LocationData.Restaurant;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.RouteJourney;
+import DataModel.User.User;
 
 import java.text.BreakIterator;
 import java.util.ArrayList;
@@ -202,6 +203,31 @@ public class UI {
         }
         else{
             System.out.println("You have not made any route :(" + System.lineSeparator() + "To search for one, access option 3 on the principal menu.");
+        }
+    }
+
+    public static void printFavStopsAndStations(User user){
+        int i = 0, j  = 0;
+
+        while (j < user.getStations().size() && i < user.getStops().size()) {
+
+            if (user.getStops().get(i).getDistance() < user.getStations().get(j).getDistance()){
+                System.out.println(user.getStops().get(i).getStopName() + " " + user.getStops().get(i).getDistance() + "BUS");
+                i++;
+            }
+            else{
+                System.out.println(user.getStations().get(j).getStationName() + " " + user.getStations().get(j).getDistance() + "BUS");
+                j++;
+            }
+        }
+
+        while (i < user.getStops().size()){
+            System.out.println(user.getStops().get(i).getStopName() + " " + user.getStops().get(i).getDistance() + "BUS");
+            i++;
+        }
+        while(j < user.getStations().size()){
+            System.out.println(user.getStations().get(j).getStationName() + " " + user.getStations().get(j).getDistance() + "BUS");
+            j++;
         }
     }
 }

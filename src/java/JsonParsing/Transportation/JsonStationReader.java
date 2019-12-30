@@ -14,7 +14,7 @@ public class JsonStationReader {
      *
      * @return   an array of all the Stations contained in the Station String returned by the API
      * */
-    public static ArrayList<Station> readStations(String input){
+    public static ArrayList<Station> readFavStations(String input, double lat, double lon){
         ArrayList<Station> stations = new ArrayList<>();
         Station auxStation = new Station();
         JsonElement json = JsonParser.parseString(input);
@@ -62,30 +62,44 @@ public class JsonStationReader {
 
 
         for (JsonElement jStation: jsonStations.getAsJsonArray("features")) {
-
+            float[] coordinates = new float[2];
             if (jStation.getAsJsonObject().has("geometry")){
-                float[] coordinates = new float[2];
-                coordinates[0] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
-                coordinates[1] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
+                coordinates[1] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
+                coordinates[0] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
+            }
+            if (calculateDifference(lat , lon ,  coordinates[0], coordinates[1]) <= 0.5) {
                 auxStation.setCoordinates(coordinates);
+                auxStation.setDistance(calculateDifference(lat , lon ,  coordinates[0], coordinates[1]));
+                if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("NOM_ESTACIO")) {
+                    auxStation.setStationName(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("NOM_ESTACIO").getAsString());
+                }
+                if (jStation.getAsJsonObject().has("id")) {
+                    auxStation.setStationId(jStation.getAsJsonObject().get("id").getAsString());
+                }
+                if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("DATA_INAUGURACIO")) {
+                    auxStation.setDate(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("DATA_INAUGURACIO").getAsString());
+                }
+                if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("PICTO")) {
+                    auxStation.setLineName(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("PICTO").getAsString());
+                }
+                stations.add(auxStation);
             }
-            if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("NOM_ESTACIO")){
-                auxStation.setStationName(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("NOM_ESTACIO").getAsString());
-            }
-            if(jStation.getAsJsonObject().has("id")){
-                auxStation.setStationId(jStation.getAsJsonObject().get("id").getAsString());
-            }
-            if(jStation.getAsJsonObject().get("properties").getAsJsonObject().has("DATA_INAUGURACIO")){
-                auxStation.setDate(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("DATA_INAUGURACIO").getAsString());
-            }
-            if(jStation.getAsJsonObject().get("properties").getAsJsonObject().has("PICTO")){
-                auxStation.setLineName(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("PICTO").getAsString());
-            }
-            stations.add(auxStation);
         }
 
 
         return stations;
     }
+    public static double calculateDifference(double lat1, double lon1, double lat2 , double lon2){
 
+        double R = 6371;
+        double dLat =  (Math.PI / 180) * (lat2 - lat1);
+        double dLon =  (Math.PI / 180) * (lon2 - lon1);
+
+        double aux = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                        Math.cos((Math.PI / 180) * lat1) * Math.cos((Math.PI / 180) * lat2) *
+                            Math.sin(dLon/2) * Math.sin(dLon/2);
+
+        double aux2 = 2 * Math.atan2(Math.sqrt(aux), Math.sqrt(1-aux));
+        return R * aux2;
+    }
 }

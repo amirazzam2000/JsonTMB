@@ -1,9 +1,13 @@
 package Managers.UserManager;
 
+import API.WebManager;
 import DataModel.LocationData.Location;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
+import DataModel.TransportationData.Stop;
 import DataModel.User.User;
+import JsonParsing.Transportation.JsonStationReader;
+import JsonParsing.Transportation.JsonStopsReader;
 import Managers.Location.LocationManager;
 
 import java.util.ArrayList;
@@ -16,6 +20,9 @@ public class UserManager {
         this.users.add(new User());
     }
 
+    public User getUser(){
+        return users.get(0);
+    }
     public ArrayList<Location> getMyLocation(){
         return users.get(0).getMyLocations();
     }
@@ -77,5 +84,22 @@ public class UserManager {
         return users.get(0).getLocationHistory();
     }
 
+    public void getFavStationsAndStops(){
+        String JsonString;
+        JsonString = WebManager.callAllStations();
+        ArrayList<Station> stations = null;
+        if (JsonString != null)
+            stations = JsonStationReader.readFavStations(JsonString,41.408385, 2.130064);
+        users.get(0).addStations(stations);
+        JsonString = WebManager.callAllStops();
+        ArrayList<Stop> stops = null;
+        if (JsonString != null)
+            stops = JsonStopsReader.readFavStops(JsonString,41.408385, 2.130064);
+        users.get(0).addStops(stops);
+
+        users.get(0).sortStations();
+        users.get(0).sortStops();
+
+    }
 
 }

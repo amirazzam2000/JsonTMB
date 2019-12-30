@@ -4,8 +4,10 @@ import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
+import DataModel.TransportationData.Stop;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 
@@ -15,6 +17,23 @@ public class User {
     int year;
     ArrayList<Station> stations;
     ArrayList<Location> myLocations;
+    ArrayList<Location> locationHistory;
+    ArrayList<FavLocation> favLocations;
+    ArrayList<Route> routes;
+    ArrayList<Stop> stops;
+
+
+    public User() {
+        this.name = null;
+        this.email = null;
+        this.year = 0;
+        this.stations = new ArrayList<>();
+        this.myLocations = new ArrayList<>();
+        this.locationHistory = new ArrayList<>();
+        this.favLocations = new ArrayList<>();
+        this.routes = new ArrayList<>();
+        this.stops = new ArrayList<>();
+    }
 
     public void setStations(ArrayList<Station> stations) {
         this.stations = stations;
@@ -48,28 +67,13 @@ public class User {
         this.routes = routes;
     }
 
-    ArrayList<Location> locationHistory;
-    ArrayList<FavLocation> favLocations;
-    ArrayList<Route> routes;
 
-
-
-    public User(String name, String email, int year, ArrayList<Station> stations) {
-        this.name = name;
-        this.email = email;
-        this.year = year;
-        this.stations = stations;
+    public ArrayList<Stop> getStops() {
+        return stops;
     }
 
-    public User() {
-        this.name = null;
-        this.email = null;
-        this.year = 0;
-        this.stations = new ArrayList<>();
-        this.myLocations = new ArrayList<>();
-        this.locationHistory = new ArrayList<>();
-        this.favLocations = new ArrayList<>();
-        this.routes = new ArrayList<>();
+    public void setStops(ArrayList<Stop> stops) {
+        this.stops = stops;
     }
 
     public void addRoute(Route route){
@@ -125,4 +129,23 @@ public class User {
     public ArrayList<Location> getMyLocations() {
         return myLocations;
     }
+
+    public void addStations(ArrayList<Station> stations){
+        this.stations.addAll(stations);
+    }
+
+    public void addStops(ArrayList<Stop> stops){
+        this.stops.addAll(stops);
+    }
+
+    public void sortStations(){
+        Station s = new Station();
+        stations.sort(s);
+    }
+    public void sortStops(){
+        Stop s = new Stop();
+        stops.sort(s);
+    }
+
+
 }

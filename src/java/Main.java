@@ -7,9 +7,9 @@ public class Main {
     public static void main(String[] args) {
         String JsonString;
         JsonLocationReader.readLocations();
-        JsonString = WebManager.callAllStations();
+        /*JsonString = WebManager.callAllStations();
         if (JsonString != null)
-            JsonStationReader.readStations(JsonString);
+            JsonStationReader.readStations(JsonString);*/
         MainSystem.mainSystem();
     }
 }

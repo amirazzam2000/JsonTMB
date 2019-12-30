@@ -92,7 +92,8 @@ public class MainSystem {
                                 UI.printMyRoutes(users.getMyRoutes());
                                 break;
                             case "d":
-
+                                users.getFavStationsAndStops();
+                                UI.printFavStopsAndStations(users.getUser());
                                 break;
                             case "e":
                                 System.out.println("Stations inaugurated in " + users.getYear() + ":");
