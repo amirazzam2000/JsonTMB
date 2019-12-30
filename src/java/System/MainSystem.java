@@ -42,8 +42,8 @@ public class MainSystem {
             // displaying the menu :
             UI.printMainMenu();
             firstOption = scanner.nextInt();
-            switch (firstOption){
-                case 1 :
+            switch (firstOption) {
+                case 1:
                     do {
                         UI.printOption1Menu();
                         scanner = new Scanner(System.in);
@@ -54,15 +54,15 @@ public class MainSystem {
                                     UI.printMyLocationOption(users.getMyLocation());
                                     System.out.println("Want to create a new location? (yes/no)");
                                     input = scanner.nextLine();
-                                    if(input.compareToIgnoreCase("yes") == 0){
+                                    if (input.compareToIgnoreCase("yes") == 0) {
                                         Location location = new Location();
                                         do {
                                             System.out.println("Location Name: ");
                                             location.setName(scanner.nextLine());
                                             check = LocationManager.checkLocationNameExists(location.getName());
-                                            if(check)
+                                            if (check)
                                                 UI.printLocationExistsError();
-                                        }while(check);
+                                        } while (check);
 
                                         do {
                                             System.out.println("Length: ");
@@ -70,22 +70,20 @@ public class MainSystem {
                                             System.out.println(System.lineSeparator() + "Latitude: ");
                                             location.setLatitude(scanner.nextFloat());
                                             check = LocationManager.checkCoordinates(location.getLatitude(), location.getLongitude());
-                                            if(!check)
+                                            if (!check)
                                                 UI.printErrorCoordinates();
-                                        }while(!check);
+                                        } while (!check);
                                         scanner = new Scanner(System.in);
                                         System.out.println("Description: ");
                                         location.setDescription(scanner.nextLine());
                                         users.createNewMyLocation(location);
                                         UI.printInfoValidMessage();
-                                    }
-                                    else if(input.compareToIgnoreCase("no")==0){
+                                    } else if (input.compareToIgnoreCase("no") == 0) {
                                         flag = false;
-                                    }
-                                    else {
+                                    } else {
                                         UI.printInputErrorYN();
                                     }
-                                }while(flag);
+                                } while (flag);
                                 flag = true; // reinitializing the flag to false so we can re use it in the future
                                 break;
                             case "b":
@@ -105,37 +103,40 @@ public class MainSystem {
                                 UI.printErrorMenu();
                                 break;
                         }
-                    }while(secondOption.compareToIgnoreCase("f") != 0);
+                    } while (secondOption.compareToIgnoreCase("f") != 0);
                     break;
                 case 2:
                     System.out.println("Enter the name of a location: ");
                     scanner = new Scanner(System.in);
                     Location location = LocationManager.searchLocations(scanner.nextLine());
                     UI.printSearchedLocation(location);
-                    if (location != null)
+                    if (location != null){
                         users.addLocationHistory(location);
-                        System.out.println("Do you want to save the found location as your favorite? (yes/no)");
-                        String favLocation = scanner.nextLine();
+                        System.out.println(System.lineSeparator() + "Do you want to save the found location as your favorite? (yes/no)");
+                        String favLocOption;
                         do {
-                            if (favLocation.equalsIgnoreCase("yes") || favLocation.equalsIgnoreCase("no")) {
-                                if (favLocation.equalsIgnoreCase("yes")) {
+                            favLocOption = scanner.nextLine();
+                            if (favLocOption.equalsIgnoreCase("yes") || favLocOption.equalsIgnoreCase("no")) {
+                                if (favLocOption.equalsIgnoreCase("yes")) {
                                     String type;
                                     do {
                                         System.out.println("Type (home / work / studies / leisure / culture):");
                                         type = scanner.nextLine();
                                         flag = type.equalsIgnoreCase("home") || type.equalsIgnoreCase("work") || type.equalsIgnoreCase("studies") || type.equalsIgnoreCase("leisure") || type.equalsIgnoreCase("culture");
-                                        if(!flag){
+                                        if (!flag) {
                                             UI.printFavLocationTypeError();
-                                        }
-                                        else{
-                                            System.out.println(location.getName() + " has been assigned as a new favorite location.");
+                                        } else {
+                                            if (location != null)
+                                                System.out.println(location.getName() + " has been assigned as a new favorite location.");
                                         }
                                     } while (!flag);
+
+                                    users.addFavLocation(location, type);
                                 }
-                            }
-                            else
+                            } else
                                 UI.printInputErrorYN();
-                        }while(!(favLocation.equalsIgnoreCase("yes") || favLocation.equalsIgnoreCase("no")));
+                        } while (!(favLocOption.equalsIgnoreCase("yes") || favLocOption.equalsIgnoreCase("no")));
+                    }
                     break;
                 case 3:
                     Location originLocation = new Location();

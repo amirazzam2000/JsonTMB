@@ -112,7 +112,10 @@ public class User {
         myLocations.add(location);
     }
 
-    public void addLocationHistory(Location location) { locationHistory.add(location); }
+    public void addLocationHistory(Location location) {
+        if (!locationHistory.contains(location))
+                locationHistory.add(location);
+    }
 
     public void addFavLocation(Location location, String type){
         FavLocation aux = new FavLocation(type, location);
