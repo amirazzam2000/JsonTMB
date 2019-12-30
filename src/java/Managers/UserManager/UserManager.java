@@ -76,4 +76,6 @@ public class UserManager {
     public ArrayList<Location> getLocationHistory(){
         return users.get(0).getLocationHistory();
     }
+
+
 }

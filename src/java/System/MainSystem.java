@@ -7,7 +7,6 @@ import DataModel.TransportationData.Station;
 import JsonParsing.Transportation.JsonRouteReader;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
-
 import java.util.Scanner;
 
 public class MainSystem {
@@ -93,6 +92,7 @@ public class MainSystem {
                                 UI.printMyRoutes(users.getMyRoutes());
                                 break;
                             case "d":
+
                                 break;
                             case "e":
                                 System.out.println("Stations inaugurated in " + users.getYear() + ":");
@@ -126,12 +126,12 @@ public class MainSystem {
                                         if (!flag) {
                                             UI.printFavLocationTypeError();
                                         } else {
-                                            if (location != null)
+                                            if (location != null) {
+                                                users.addFavLocation(location, type);
                                                 System.out.println(location.getName() + " has been assigned as a new favorite location.");
+                                            }
                                         }
                                     } while (!flag);
-
-                                    users.addFavLocation(location, type);
                                 }
                             } else
                                 UI.printInputErrorYN();
