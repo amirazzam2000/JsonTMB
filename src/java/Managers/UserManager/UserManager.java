@@ -1,6 +1,7 @@
 package Managers.UserManager;
 
 import DataModel.LocationData.Location;
+import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
 import DataModel.User.User;
 import Managers.Location.LocationManager;
@@ -56,4 +57,15 @@ public class UserManager {
         LocationManager.add(location);
     }
 
+    public void addRoute(Route route){
+        users.get(0).addRoute(route);
+    }
+
+    public void addLocationHistory(Location location){
+        users.get(0).addLocationHistory(location);
+    }
+
+    public ArrayList<Location> getLocationHistory(){
+        return users.get(0).getLocationHistory();
+    }
 }

@@ -15,6 +15,39 @@ public class User {
     int year;
     ArrayList<Station> stations;
     ArrayList<Location> myLocations;
+
+    public void setStations(ArrayList<Station> stations) {
+        this.stations = stations;
+    }
+
+    public void setMyLocations(ArrayList<Location> myLocations) {
+        this.myLocations = myLocations;
+    }
+
+    public ArrayList<Location> getLocationHistory() {
+        return locationHistory;
+    }
+
+    public void setLocationHistory(ArrayList<Location> locationHistory) {
+        this.locationHistory = locationHistory;
+    }
+
+    public ArrayList<FavLocation> getFavLocations() {
+        return favLocations;
+    }
+
+    public void setFavLocations(ArrayList<FavLocation> favLocations) {
+        this.favLocations = favLocations;
+    }
+
+    public ArrayList<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(ArrayList<Route> routes) {
+        this.routes = routes;
+    }
+
     ArrayList<Location> locationHistory;
     ArrayList<FavLocation> favLocations;
     ArrayList<Route> routes;
@@ -27,6 +60,7 @@ public class User {
         this.year = year;
         this.stations = stations;
     }
+
     public User() {
         this.name = null;
         this.email = null;
@@ -35,6 +69,11 @@ public class User {
         this.myLocations = new ArrayList<>();
         this.locationHistory = new ArrayList<>();
         this.favLocations = new ArrayList<>();
+        this.routes = new ArrayList<>();
+    }
+
+    public void addRoute(Route route){
+        routes.add(route);
     }
 
     public String getName() {
@@ -72,6 +111,8 @@ public class User {
     public void addLocation(Location location){
         myLocations.add(location);
     }
+
+    public void addLocationHistory(Location location) { locationHistory.add(location); }
 
     public ArrayList<Location> getMyLocations() {
         return myLocations;

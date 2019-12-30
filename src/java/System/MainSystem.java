@@ -89,7 +89,7 @@ public class MainSystem {
                                 flag = true; // reinitializing the flag to false so we can re use it in the future
                                 break;
                             case "b":
-
+                                UI.printLocationHistory(users.getLocationHistory());
                                 break;
                             case "c":
                                 break;
@@ -111,6 +111,8 @@ public class MainSystem {
                     scanner = new Scanner(System.in);
                     Location location = LocationManager.searchLocations(scanner.nextLine());
                     UI.printSearchedLocation(location);
+                    if (location != null)
+                        users.addLocationHistory(location);
                     break;
                 case 3:
                     Location originLocation = new Location();
@@ -193,12 +195,11 @@ public class MainSystem {
 
                     String JsonString;
                     JsonString = WebManager.callRoute(route);
-                    //System.out.println(JsonString);
                     if (JsonString != null)
                         route.setItineraries(JsonRouteReader.readRoute(JsonString).getItineraries());
 
                     UI.printRoute(route);
-
+                    users.addRoute(route);
 
                     break;
                 case 4:

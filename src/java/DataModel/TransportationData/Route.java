@@ -106,12 +106,12 @@ public class Route {
         int shortest = Integer.MAX_VALUE;
         int time ;
         for (int j = 0; j < itineraries.size() ; j++) {
-            time = itineraries.get(j).getDuration();
-            /*time = 0;
+            //time = itineraries.get(j).getDuration();
+            time = 0;
             for (RouteJourney journey: itineraries.get(j).getJourneys()
                  ) {
                 time += journey.time;
-            }*/
+            }
             if (time < shortest){
                 shortest = time;
                 i = j;

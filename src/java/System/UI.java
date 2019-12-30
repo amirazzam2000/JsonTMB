@@ -96,8 +96,8 @@ public class UI {
     }
 
     public static void printLocationHistory(ArrayList<Location> LocationHistory){
-        System.out.println("Searched locations: ");
-        if(LocationHistory != null){
+        if(LocationHistory != null && LocationHistory.size() > 0){
+            System.out.println("Searched locations: ");
             for(int i = LocationHistory.size() - 1; i >= 0; i--){
                 System.out.println("-" + LocationHistory.get(i).getName());
             }
