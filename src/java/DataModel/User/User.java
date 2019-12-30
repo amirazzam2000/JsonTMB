@@ -114,6 +114,11 @@ public class User {
 
     public void addLocationHistory(Location location) { locationHistory.add(location); }
 
+    public void addFavLocation(Location location, String type){
+        FavLocation aux = new FavLocation(type, location);
+        favLocations.add(aux);
+    }
+
     public ArrayList<Location> getMyLocations() {
         return myLocations;
     }

@@ -69,6 +69,10 @@ public class UserManager {
         users.get(0).addLocationHistory(location);
     }
 
+    public void addFavLocation (Location location, String type ) {
+        users.get(0).addFavLocation(location ,type);
+    }
+
     public ArrayList<Location> getLocationHistory(){
         return users.get(0).getLocationHistory();
     }
