@@ -1,12 +1,15 @@
 package System;
 
 import API.WebManager;
-import DataModel.LocationData.Location;
+import DataModel.LocationData.*;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
 import JsonParsing.Transportation.JsonRouteReader;
+import JsonParsing.Transportation.JsonStationReader;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainSystem {
@@ -92,11 +95,29 @@ public class MainSystem {
                                 UI.printMyRoutes(users.getMyRoutes());
                                 break;
                             case "d":
-                                users.getFavStationsAndStops();
-                                UI.printFavStopsAndStations(users.getUser());
+                                if (users.getFavLocations() != null && users.getFavLocations().size() > 0) {
+                                    for (FavLocation favLoc : users.getFavLocations()) {
+                                        boolean print = users.getFavStationsAndStops(favLoc);
+                                        UI.printFavStopsAndStations(users.getUser(), favLoc, print);
+                                    }
+                                }
+                                else{
+                                    UI.printFavStationAndStopsError();
+                                }
                                 break;
                             case "e":
-                                System.out.println("Stations inaugurated in " + users.getYear() + ":");
+                                String JsonString;
+                                JsonString = WebManager.callAllStations();
+                                ArrayList<Station> stations = null;
+                                if (JsonString != null)
+                                    stations = JsonStationReader.readInauguratedStations(JsonString, users.getYear());
+                                if (stations != null && stations.size() > 0) {
+
+                                    UI.printStationsInaguarated(stations, users.getYear());
+                                }
+                                else{
+
+                                }
                                 break;
                             case "f":
                                 break;

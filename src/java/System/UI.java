@@ -1,11 +1,9 @@
 package System;
 
-import DataModel.LocationData.Hotel;
-import DataModel.LocationData.Location;
-import DataModel.LocationData.Monument;
-import DataModel.LocationData.Restaurant;
+import DataModel.LocationData.*;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.RouteJourney;
+import DataModel.TransportationData.Station;
 import DataModel.User.User;
 
 import java.text.BreakIterator;
@@ -206,28 +204,59 @@ public class UI {
         }
     }
 
-    public static void printFavStopsAndStations(User user){
-        int i = 0, j  = 0;
+    public static void printFavStopsAndStations(User user, FavLocation favLoc, boolean print) {
+        int i = 0, j = 0;
+        int counter = 0;
+        System.out.println("- " + favLoc.getLocation().getName());
 
-        while (j < user.getStations().size() && i < user.getStops().size()) {
+        if(print) {
+            while (j < user.getStations().size() && i < user.getStops().size()) {
+                if (user.getStops().get(i).getDistance() < user.getStations().get(j).getDistance()) {
+                    if (favLoc.getLocation().getName().compareToIgnoreCase(user.getStops().get(i).getLocationName()) == 0) {
+                        System.out.println("    " + (counter + 1) + ") " + user.getStops().get(i).getStopName() + " (" + user.getStops().get(i).getStopId() + ") BUS");
+                        counter++;
+                    }
+                    i++;
+                } else {
+                    if (favLoc.getLocation().getName().compareToIgnoreCase(user.getStations().get(j).getLocationName()) == 0) {
+                        System.out.println("    " + (counter + 1) + ") " + user.getStations().get(j).getStationName() + " (" + user.getStations().get(j).getStationId() + ") STATION");
+                        counter++;
+                    }
+                    j++;
+                }
+            }
 
-            if (user.getStops().get(i).getDistance() < user.getStations().get(j).getDistance()){
-                System.out.println(user.getStops().get(i).getStopName() + " " + user.getStops().get(i).getDistance() + "BUS");
+            while (i < user.getStops().size()) {
+                if (favLoc.getLocation().getName().compareToIgnoreCase(user.getStops().get(i).getLocationName()) == 0) {
+                    System.out.println("    " + (counter + 1) + ") " + user.getStops().get(i).getStopName() + " (" + user.getStops().get(i).getStopId() + ") BUS");
+                    counter++;
+                }
                 i++;
             }
-            else{
-                System.out.println(user.getStations().get(j).getStationName() + " " + user.getStations().get(j).getDistance() + "BUS");
+            while (j < user.getStations().size()) {
+                if (favLoc.getLocation().getName().compareToIgnoreCase(user.getStations().get(j).getLocationName()) == 0) {
+                    System.out.println("    " + (counter + 1) + ") " + user.getStations().get(j).getStationName() + " (" + user.getStations().get(j).getStationId() + ") STATION");
+                    counter++;
+                }
                 j++;
             }
         }
-
-        while (i < user.getStops().size()){
-            System.out.println(user.getStops().get(i).getStopName() + " " + user.getStops().get(i).getDistance() + "BUS");
-            i++;
+        else {
+            System.out.println("    TMB is doing its best to make the bus and subway arrive here.");
         }
-        while(j < user.getStations().size()){
-            System.out.println(user.getStations().get(j).getStationName() + " " + user.getStations().get(j).getDistance() + "BUS");
-            j++;
+
+    }
+
+    public static void printFavStationAndStopsError() {
+        System.out.println("In order to have favourite stops and stations it is necessary to create a favourite location previously.");
+    }
+
+    public static void printStationsInaguarated(ArrayList<Station> stations, int year){
+        System.out.println("Stations inaugurated in " + year + ":");
+        for(Station s: stations){
+            System.out.println("-" + s.getStationName() + "(" + s.getLineName() + ")");
         }
     }
+
+
 }

@@ -1,6 +1,7 @@
 package Managers.UserManager;
 
 import API.WebManager;
+import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
@@ -84,22 +85,44 @@ public class UserManager {
         return users.get(0).getLocationHistory();
     }
 
-    public void getFavStationsAndStops(){
-        String JsonString;
-        JsonString = WebManager.callAllStations();
-        ArrayList<Station> stations = null;
-        if (JsonString != null)
-            stations = JsonStationReader.readFavStations(JsonString,41.408385, 2.130064);
-        users.get(0).addStations(stations);
-        JsonString = WebManager.callAllStops();
-        ArrayList<Stop> stops = null;
-        if (JsonString != null)
-            stops = JsonStopsReader.readFavStops(JsonString,41.408385, 2.130064);
-        users.get(0).addStops(stops);
+    public boolean getFavStationsAndStops(FavLocation location){
+        boolean flag =false;
 
-        users.get(0).sortStations();
-        users.get(0).sortStops();
+        for (Station station: users.get(0).getStations()) {
+            if (location.getLocation().getName().compareToIgnoreCase(station.getLocationName()) == 0){
+                flag = true;
+                break;
+            }
+        }
+        for (Stop stop: users.get(0).getStops()) {
+            if (location.getLocation().getName().compareToIgnoreCase(stop.getLocationName()) == 0){
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            String JsonString;
+            JsonString = WebManager.callAllStations();
+            ArrayList<Station> stations = null;
+            if (JsonString != null)
+                stations = JsonStationReader.readFavStations(JsonString, location);
+            users.get(0).addStations(stations);
+            JsonString = WebManager.callAllStops();
+            ArrayList<Stop> stops = null;
+            if (JsonString != null)
+                stops = JsonStopsReader.readFavStops(JsonString, location);
+            users.get(0).addStops(stops);
 
+            users.get(0).sortStations();
+            users.get(0).sortStops();
+            if (stations == null || stations.size() == 0 || stops == null || stops.size() == 0 )
+                return false;
+        }
+        return true;
+    }
+
+    public ArrayList<FavLocation> getFavLocations(){
+        return users.get(0).getFavLocations();
     }
 
 }

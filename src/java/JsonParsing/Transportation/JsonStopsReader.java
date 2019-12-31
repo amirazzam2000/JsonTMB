@@ -1,5 +1,6 @@
 package JsonParsing.Transportation;
 
+import DataModel.LocationData.FavLocation;
 import DataModel.TransportationData.*;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -8,7 +9,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 public class JsonStopsReader {
-    public static ArrayList<Stop> readFavStops(String input, double lat, double lon){
+    public static ArrayList<Stop> readFavStops(String input, FavLocation location){
         ArrayList<Stop> stop = new ArrayList<>();
         Stop auxStop = new Stop();
 
@@ -22,9 +23,10 @@ public class JsonStopsReader {
                 coordinates[1] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsFloat();
                 coordinates[0] = jStation.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsFloat();
             }
-            if (calculateDifference(lat , lon ,  coordinates[0], coordinates[1]) < 0.5) {
+            if (calculateDifference(location.getLatitude(), location.getLongitude() ,  coordinates[0], coordinates[1]) < 0.5) {
                 auxStop.setCoordinates(coordinates);
-                auxStop.setDistance(calculateDifference(lat , lon ,  coordinates[0], coordinates[1]));
+                auxStop.setDistance(calculateDifference(location.getLatitude(), location.getLongitude() ,  coordinates[0], coordinates[1]));
+                auxStop.setLocationName(location.getLocation().getName());
                 if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("NOM_PARADA")) {
                     auxStop.setStopName(jStation.getAsJsonObject().get("properties").getAsJsonObject().get("NOM_PARADA").getAsString());
                 }

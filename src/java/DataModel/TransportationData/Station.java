@@ -9,6 +9,15 @@ public class Station implements Comparator<Station> {
     String Date;
     String lineName;
     double distance;
+    String locationName;
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
 
     public Station(Station that) {
         this.coordinates = that.coordinates;
@@ -17,6 +26,7 @@ public class Station implements Comparator<Station> {
         this.Date = that.Date;
         this.lineName = that.lineName;
         this.distance = that.distance;
+        this.locationName = that.locationName;
     }
     public Station(){
         coordinates = new float[2];

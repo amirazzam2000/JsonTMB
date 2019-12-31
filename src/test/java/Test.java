@@ -30,12 +30,12 @@ public class Test {
         String JsonString;
         JsonString = WebManager.callAllStations();
         ArrayList<Station> stations;
-        if (JsonString != null)
-            stations = JsonStationReader.readFavStations(JsonString,41.408385, 2.130064);
+        if (JsonString != null);
+            //stations = JsonStationReader.readFavStations(JsonString,41.408385, 2.130064);
         JsonString = WebManager.callAllStops();
         ArrayList<Stop> stops;
-        if (JsonString != null)
-            stops = JsonStopsReader.readFavStops(JsonString,41.408385, 2.130064);
+        if (JsonString != null);
+           // stops = JsonStopsReader.readFavStops(JsonString,41.408385, 2.130064);
 
     }
 }
@@ -45,4 +45,5 @@ public class Test {
 * 12-30-2019
 * 12:00pm
 *
+*41.408385, 2.130064
 * */

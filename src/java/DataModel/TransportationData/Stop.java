@@ -8,6 +8,15 @@ public class Stop implements Comparator<Stop> {
     String stopId;
     String date;
     double distance;
+    String locationName;
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
 
     public Stop(Stop that) {
         this.coordinates = that.coordinates;
@@ -15,6 +24,7 @@ public class Stop implements Comparator<Stop> {
         this.stopId = that.stopId;
         this.date = that.date;
         this.distance = that.distance;
+        this.locationName = that.locationName;
     }
 
     public Stop(){
