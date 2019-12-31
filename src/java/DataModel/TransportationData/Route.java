@@ -121,7 +121,7 @@ public class Route {
         this.maxWalkingDistance = maxWalkingDistance;
     }
 
-    public int getShortestRoute(){
+    public int getShortestRoute(float maxWalkingDistance){
         int i = 0;
         int shortest = Integer.MAX_VALUE;
         int time ;
@@ -132,7 +132,7 @@ public class Route {
                  ) {
                 time += journey.time;
             }
-            if (time < shortest){
+            if (time < shortest && itineraries.get(j).getMaxWalkDistance() <= maxWalkingDistance){
                 shortest = time;
                 i = j;
             }

@@ -3,13 +3,12 @@ package DataModel.TransportationData;
 public class RouteJourney {
     String origin;
     String stopCode;
-
-
     String destination;
     float time;
     int distance;
     String mode;
     String lineOrStreet;
+
 
     public String getOrigin() {
         return origin;

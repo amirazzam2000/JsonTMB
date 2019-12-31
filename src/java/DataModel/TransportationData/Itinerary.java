@@ -5,7 +5,15 @@ import java.util.ArrayList;
 public class Itinerary {
     private ArrayList<RouteJourney> journeys;
     private int duration;
+    private float maxWalkDistance;
 
+    public float getMaxWalkDistance() {
+        return maxWalkDistance;
+    }
+
+    public void setMaxWalkDistance(float maxWalkDistance) {
+        this.maxWalkDistance = maxWalkDistance;
+    }
     public int getDuration() {
         return duration;
     }

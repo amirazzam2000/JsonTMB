@@ -4,6 +4,7 @@ import DataModel.LocationData.*;
 import DataModel.TransportationData.*;
 import DataModel.User.User;
 
+import javax.sound.midi.Soundbank;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -145,9 +146,13 @@ public class UI {
     }
 
     public static void printRoute(Route route){
-        int i = route.getShortestRoute();
+        int i = route.getShortestRoute(route.getMaxWalkingDistance());
 
         System.out.println("Time taken: " +  Math.round(route.getItineraries().get(i).getDuration() / 60.0) + " min");
+        if (route.getItineraries().get(i).getMaxWalkDistance() > route.getMaxWalkingDistance()){
+            System.out.println("we couldn't find a route within the max walking distance you set. Sorry for the inconvenience!");
+            System.out.println("this is a suggested route: (the suggested route is the fastest route)");
+        }
 
         for (int j = 0; j < route.getItineraries().get(i).getJourneys().size(); j++) {
             if(route.getItineraries().get(i).getJourneys().get(j).getLineOrStreet() != null)
