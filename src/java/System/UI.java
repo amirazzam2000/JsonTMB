@@ -84,7 +84,7 @@ public class UI {
     }
 
     public static void printErrorNoStationsThisYear(){
-        System.out.println("No subway station opened your birth year :(" +  System.lineSeparator());
+        System.out.println("No subway station opened your birth year :(" + System.lineSeparator());
     }
 
 
