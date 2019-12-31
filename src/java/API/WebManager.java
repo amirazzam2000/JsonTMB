@@ -92,4 +92,32 @@ public class WebManager {
         }
         return jsonData;
     }
+
+    public static String callLine(String line){
+        String jsonData = null;
+        OkHttpClient client = new OkHttpClient();
+        StringBuilder url = new StringBuilder();
+        url.append("https://api.tmb.cat/v1/ibus/stops/");
+        url.append(line);
+        url.append("?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564");
+
+        Request request = new Request.Builder()
+                .url(url.toString())
+                .build();
+        Response response;
+
+        try {
+            response = client.newCall(request).execute();
+
+            if (response.body() != null){
+                jsonData = response.body().string();
+            }
+
+            //System.out.println(jsonData);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return jsonData;
+    }
 }

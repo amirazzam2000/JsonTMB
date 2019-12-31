@@ -2,8 +2,10 @@ package System;
 
 import API.WebManager;
 import DataModel.LocationData.*;
+import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
+import JsonParsing.Transportation.JsonLineReader;
 import JsonParsing.Transportation.JsonRouteReader;
 import JsonParsing.Transportation.JsonStationReader;
 import Managers.Location.LocationManager;
@@ -249,6 +251,19 @@ public class MainSystem {
 
                     break;
                 case 4:
+                    String stopId;
+                    ArrayList<Line> lines = null;
+                    do {
+                        scanner = new Scanner(System.in);
+                        System.out.println("Enter the stop code:");
+                        stopId = scanner.nextLine();
+                        JsonString = WebManager.callLine(stopId);
+                        if (JsonString != null)
+                            lines = JsonLineReader.readStopLine(JsonString, stopId);
+                        if (lines == null)
+                            UI.printWaitTimeError();
+                    }while(lines == null);
+                    UI.printWaitTime(stopId, lines, users.getUser());
                     break;
                 case 5:
                     break;

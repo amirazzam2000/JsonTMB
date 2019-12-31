@@ -1,9 +1,7 @@
 package System;
 
 import DataModel.LocationData.*;
-import DataModel.TransportationData.Route;
-import DataModel.TransportationData.RouteJourney;
-import DataModel.TransportationData.Station;
+import DataModel.TransportationData.*;
 import DataModel.User.User;
 
 import java.text.BreakIterator;
@@ -262,5 +260,21 @@ public class UI {
         }
     }
 
+    public static void printWaitTime(String stopId, ArrayList<Line> lines, User user){
+        if (lines != null){
+            for (Stop stop: user.getStops()) {
+                if (stop.getStopId().compareToIgnoreCase(stopId) == 0){
+                    System.out.println("Favourite stop!");
+                    break;
+                }
+            }
+            for (Line line : lines) {
+                System.out.println(line.getLineName() + " - " + line.getDestination() + " - " + line.getTimeLeftMin() + " min");
+            }
+        }
+    }
 
+    public static void printWaitTimeError() {
+        System.out.println("Error, stop code not valid!");
+    }
 }
