@@ -83,6 +83,10 @@ public class UI {
         System.out.println("Error! This location name already exists." + System.lineSeparator());
     }
 
+    public static void printErrorNoStationsThisYear(){
+        System.out.println("No subway station opened your birth year :(" + System.lineSeparator());
+    }
+
 
     public static void printLocationExistsError(){
         System.out.println("Error! This location already exists." + System.lineSeparator());
