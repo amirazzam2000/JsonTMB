@@ -5,6 +5,9 @@ import DataModel.LocationData.*;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
+import JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions;
+import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
+import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;
 import JsonParsing.Transportation.JsonLineReader;
 import JsonParsing.Transportation.JsonRouteReader;
 import JsonParsing.Transportation.JsonStationReader;
@@ -163,92 +166,100 @@ public class MainSystem {
                     }
                     break;
                 case 3:
-                    Location originLocation = new Location();
-                    Location destLocation = new Location();
-                    Route route = new Route();
-                    scanner = new Scanner(System.in);
-
-                    flag = true;
                     do {
-                        System.out.println("Origin? (lat,lon/name location)");
-                        String origin = scanner.nextLine();
-                        if (origin.charAt(0) >= '0' && origin.charAt(0) <= '9') {
-                            String[] coords = null;
-                            coords = origin.split(",");
-                            flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
-                        } else {
-                            originLocation = LocationManager.searchLocations(origin);
-                            if (originLocation != null) {
-                                origin = LocationManager.lanLogToString(originLocation);
+                        flag = false;
+                        Location originLocation = new Location();
+                        Location destLocation = new Location();
+                        Route route = new Route();
+                        scanner = new Scanner(System.in);
+
+                        flag = true;
+                        do {
+                            System.out.println("Origin? (lat,lon/name location)");
+                            String origin = scanner.nextLine();
+                            if (origin.length() > 0 && origin.charAt(0) >= '0' && origin.charAt(0) <= '9') {
+                                String[] coords = null;
+                                coords = origin.split(",");
+                                flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
+                            } else {
+                                originLocation = LocationManager.searchLocations(origin);
+                                if (originLocation != null) {
+                                    origin = LocationManager.lanLogToString(originLocation);
+                                    flag = false;
+                                } else {
+                                    UI.printRouteLocationError();
+                                }
+                            }
+
+                            route.setOrigin(origin);
+
+                        } while (flag);
+
+                        flag = true;
+                        do {
+                            System.out.println("Destination? (lat,lon/name location)");
+                            String destination = scanner.nextLine();
+
+                            if (destination.length() > 0 && destination.charAt(0) >= '0' && destination.charAt(0) <= '9') {
+                                String[] coords = null;
+                                coords = destination.split(",");
+                                flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
+                            } else {
+                                destLocation = LocationManager.searchLocations(destination);
+                                if (destLocation != null) {
+                                    destination = LocationManager.lanLogToString(destLocation);
+                                    flag = false;
+                                } else {
+                                    UI.printRouteLocationError();
+                                }
+                            }
+
+                            route.setDestination(destination);
+
+                        } while (flag);
+
+
+                        flag = true;
+
+                        do {
+                            System.out.println("Departure or arrival? (d/a)");
+                            String destOrArrivalOption = scanner.nextLine();
+
+                            if (destOrArrivalOption.equalsIgnoreCase("d") || destOrArrivalOption.equalsIgnoreCase("a")) {
+                                route.setDepartureOrArrival(destOrArrivalOption.charAt(0));
                                 flag = false;
                             } else {
-                                UI.printRouteLocationError();
+                                UI.printRouteDestArrivalError();
                             }
-                        }
 
-                        route.setOrigin(origin);
+                        } while (flag);
 
-                    }while(flag);
+                        System.out.println("Day? (MM-DD-YYYY)");
+                        route.setDay(scanner.nextLine());
 
-                    flag = true;
-                    do {
-                        System.out.println("Destination? (lat,lon/name location)");
-                        String destination = scanner.nextLine();
+                        System.out.println("Hour? (HH:MMam/HH:MMpm)");
+                        route.setHour(scanner.nextLine());
 
+                        System.out.println("Maximum walking distance in meters?");
+                        route.setMaxWalkingDistance(scanner.nextFloat());
 
-                        if (destination.charAt(0) >= '0' && destination.charAt(0) <= '9') {
-                            String[] coords = null;
-                            coords = destination.split(",");
-                            flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
-                        } else {
-                            destLocation = LocationManager.searchLocations(destination);
-                            if (destLocation != null) {
-                                destination = LocationManager.lanLogToString(destLocation);
+                        String JsonString;
+                        JsonString = WebManager.callRoute(route);
+                        if (JsonString != null) {
+                            try {
+                                route.setItineraries(JsonRouteReader.readRoute(JsonString).getItineraries());
+                                UI.printRoute(route);
+                                users.addRoute(route);
+                            } catch (RouteOutOfReach routeOutOfReach) {
+                                System.out.println(routeOutOfReach.getMessage());
                                 flag = false;
-                            } else {
-                                UI.printRouteLocationError();
+                            } catch (RouteWrongParameter routeWrongParameter){
+                                System.out.println(routeWrongParameter.getMessage());
+                                flag = true;
                             }
+
                         }
-
-                        route.setDestination(destination);
-
-                    }while(flag);
-
-
-
-                    flag = true;
-
-                    do{
-                        System.out.println("Departure or arrival? (d/a)");
-                        String destOrArrivalOption = scanner.nextLine();
-
-                        if(destOrArrivalOption.equalsIgnoreCase("d") || destOrArrivalOption.equalsIgnoreCase("a")){
-                            route.setDepartureOrArrival(destOrArrivalOption.charAt(0));
-                            flag = false;
-                        }
-                        else{
-                            UI.printRouteDestArrivalError();
-                        }
-
-                    }while(flag);
-
-                    System.out.println("Day? (MM-DD-YYYY)");
-                    route.setDay(scanner.nextLine());
-
-                    System.out.println("Hour? (HH:MMam/HH:MMpm)");
-                    route.setHour(scanner.nextLine());
-
-                    System.out.println("Maximum walking distance in meters?");
-                    route.setMaxWalkingDistance(scanner.nextFloat());
-
-                    String JsonString;
-                    JsonString = WebManager.callRoute(route);
-                    if (JsonString != null)
-                        route.setItineraries(JsonRouteReader.readRoute(JsonString).getItineraries());
-
-                    UI.printRoute(route);
-                    users.addRoute(route);
-
+                    }while (flag);
                     break;
                 case 4:
                     String stopId;
@@ -257,7 +268,7 @@ public class MainSystem {
                         scanner = new Scanner(System.in);
                         System.out.println("Enter the stop code:");
                         stopId = scanner.nextLine();
-                        JsonString = WebManager.callLine(stopId);
+                        String JsonString = WebManager.callLine(stopId);
                         if (JsonString != null)
                             lines = JsonLineReader.readStopLine(JsonString, stopId);
                         if (lines == null)
