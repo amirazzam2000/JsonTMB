@@ -159,7 +159,7 @@ public class JsonStationReader {
             int auxYear = 0;
             if (jStation.getAsJsonObject().get("properties").getAsJsonObject().has("DATA_INAUGURACIO")) {
                 date = (jStation.getAsJsonObject().get("properties").getAsJsonObject().get("DATA_INAUGURACIO").getAsString());
-                auxYear = Integer.parseInt(date.substring(0,3));
+                auxYear = Integer.parseInt(date.substring(0,4));
             }
 
             if (year == auxYear) {

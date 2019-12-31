@@ -258,7 +258,7 @@ public class UI {
     public static void printStationsInaguarated(ArrayList<Station> stations, int year){
         System.out.println("Stations inaugurated in " + year + ":");
         for(Station s: stations){
-            System.out.println("-" + s.getStationName() + "(" + s.getLineName() + ")");
+            System.out.println("-" + s.getStationName() + " (" + s.getLineName() + ")");
         }
     }
 
