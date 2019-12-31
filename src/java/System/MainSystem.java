@@ -5,7 +5,7 @@ import DataModel.LocationData.*;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
-import JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions;
+import JsonParsing.ParsingExceptions.LineException;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;
 import JsonParsing.Transportation.JsonLineReader;
@@ -15,6 +15,7 @@ import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainSystem {
@@ -28,7 +29,7 @@ public class MainSystem {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         boolean check = false ;
-        int firstOption;
+        int firstOption = 6;
         String secondOption;
         String input;
         // Registering a new user:
@@ -39,16 +40,35 @@ public class MainSystem {
 
         System.out.println(System.lineSeparator() + "E-mail:");
         users.setEmail(scanner.nextLine());
-
-        System.out.println(System.lineSeparator() + "Birth Year:");
-        users.setYear(scanner.nextInt());
-
+        do{
+            scanner = new Scanner(System.in);
+            flag = false;
+            System.out.println(System.lineSeparator() + "Birth Year:");
+            try {
+                users.setYear(scanner.nextInt());
+            }catch (InputMismatchException e){
+                System.out.println("you can only enter numbers here!");
+                flag = true;
+            }
+        }while(flag);
         UI.printInfoValidMessage();
 
         do {
             // displaying the menu :
             UI.printMainMenu();
-            firstOption = scanner.nextInt();
+            do{
+                flag = false;
+                scanner = new Scanner(System.in);
+                try {
+                    firstOption = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("you can only enter numbers here!");
+                    flag = true;
+                    System.out.println(System.lineSeparator() + "Select an option: ");
+
+                }
+            }while (flag);
+
             switch (firstOption) {
                 case 1:
                     do {
@@ -118,7 +138,7 @@ public class MainSystem {
                                     stations = JsonStationReader.readInauguratedStations(JsonString, users.getYear());
                                 if (stations != null && stations.size() > 0) {
 
-                                    UI.printStationsInaguarated(stations, users.getYear());
+                                    UI.printStationsInaugurated(stations, users.getYear());
                                 }
                                 else{
                                     UI.printErrorNoStationsThisYear();
@@ -172,8 +192,8 @@ public class MainSystem {
                         Location destLocation = new Location();
                         Route route = new Route();
                         scanner = new Scanner(System.in);
-
                         flag = true;
+
                         do {
                             System.out.println("Origin? (lat,lon/name location)");
                             String origin = scanner.nextLine();
@@ -182,6 +202,7 @@ public class MainSystem {
                                 coords = origin.split(",");
                                 flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
                             } else {
+                                route.setOriginName(origin);
                                 originLocation = LocationManager.searchLocations(origin);
                                 if (originLocation != null) {
                                     origin = LocationManager.lanLogToString(originLocation);
@@ -205,6 +226,7 @@ public class MainSystem {
                                 coords = destination.split(",");
                                 flag = !(LocationManager.checkCoordinates(Float.parseFloat(coords[0]), Float.parseFloat(coords[1])));
                             } else {
+                                route.setDestinationName(destination);
                                 destLocation = LocationManager.searchLocations(destination);
                                 if (destLocation != null) {
                                     destination = LocationManager.lanLogToString(destLocation);
@@ -241,8 +263,16 @@ public class MainSystem {
                         route.setHour(scanner.nextLine());
 
                         System.out.println("Maximum walking distance in meters?");
-                        route.setMaxWalkingDistance(scanner.nextFloat());
-
+                        do {
+                            flag = false;
+                            scanner = new Scanner(System.in);
+                            try {
+                                route.setMaxWalkingDistance(scanner.nextFloat());
+                            }catch (InputMismatchException e){
+                                System.out.println("you can only enter numbers here!");
+                                flag = true;
+                            }
+                        }while (flag);
                         String JsonString;
                         JsonString = WebManager.callRoute(route);
                         if (JsonString != null) {
@@ -265,15 +295,20 @@ public class MainSystem {
                     String stopId;
                     ArrayList<Line> lines = null;
                     do {
+                        flag = false;
                         scanner = new Scanner(System.in);
                         System.out.println("Enter the stop code:");
                         stopId = scanner.nextLine();
                         String JsonString = WebManager.callLine(stopId);
-                        if (JsonString != null)
-                            lines = JsonLineReader.readStopLine(JsonString, stopId);
-                        if (lines == null)
-                            UI.printWaitTimeError();
-                    }while(lines == null);
+                        if (JsonString != null) {
+                            try {
+                                lines = JsonLineReader.readStopLine(JsonString, stopId);
+                            } catch (LineException e) {
+                                System.out.println(e.getMessage());
+                                flag = true;
+                            }
+                        }
+                    }while(flag);
                     UI.printWaitTime(stopId, lines, users.getUser());
                     break;
                 case 5:

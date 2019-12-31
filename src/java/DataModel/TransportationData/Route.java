@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class Route {
     private String origin;
+    private String originName;
     private String destination;
+    private String destinationName;
     private char departureOrArrival;
     private String day;
     private String hour;
-
     private float maxWalkingDistance;
     private ArrayList<Itinerary> itineraries;
+
 
     public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance, ArrayList<Itinerary> itineraries) {
         this.origin = origin;
@@ -34,11 +36,29 @@ public class Route {
 
     public Route() {
         this.origin = null;
+        this.originName = null;
         this.destination = null;
+        this.destinationName = null;
         this.day = null;
         this.hour = null;
         this.maxWalkingDistance = 0;
         itineraries = new ArrayList<>();
+    }
+
+    public String getOriginName() {
+        return originName;
+    }
+
+    public void setOriginName(String originName) {
+        this.originName = originName;
+    }
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
     public void addItineraries(Itinerary itinerary){

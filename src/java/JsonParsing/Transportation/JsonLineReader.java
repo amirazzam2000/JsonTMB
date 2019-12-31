@@ -3,6 +3,7 @@ package JsonParsing.Transportation;
 import DataModel.LocationData.FavLocation;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Stop;
+import JsonParsing.ParsingExceptions.LineException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -10,7 +11,7 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 public class JsonLineReader {
-    public static ArrayList<Line> readStopLine(String input, String stopId){
+    public static ArrayList<Line> readStopLine(String input, String stopId) throws LineException {
         ArrayList<Line> lines = new ArrayList<>();
         Line auxLine = new Line();
 
@@ -32,7 +33,7 @@ public class JsonLineReader {
         }
         else{
             // through exception
-            return null;
+            throw new LineException("Error, stop code not valid!");
         }
 
         return lines;

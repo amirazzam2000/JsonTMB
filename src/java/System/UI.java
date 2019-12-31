@@ -17,7 +17,7 @@ public class UI {
     }
 
     public static void printRouteLocationError(){
-        System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
+        System.out.println("Sorry, this location is not valid :(" + System.lineSeparator());
 
     }
 
@@ -65,9 +65,6 @@ public class UI {
         System.out.println("Error, there is some wrong parameter :(" + System.lineSeparator());
     }
 
-    public static void printRouteTransitError(){
-        System.out.println("TMB is doing its best to make the bus and subway make this route in the future." + System.lineSeparator());
-    }
 
     public static void printInputErrorYN(){
         System.out.println("Error! You must enter \"yes\" or \"no\"." + System.lineSeparator());
@@ -158,27 +155,25 @@ public class UI {
             if (j == 0)
                 System.out.print(route.getItineraries().get(i).getJourneys().get(j).getOrigin());
 
-            else if( route.getItineraries().get(i).getJourneys().get(j - 1).getMode().compareToIgnoreCase("walk") == 0 )
-                System.out.print( route.getItineraries().get(i).getJourneys().get(j).getOrigin() );
-            if (route.getItineraries().get(i).getJourneys().get(j).getStopCode() != null)
-                System.out.print(" (" +  route.getItineraries().get(i).getJourneys().get(j).getStopCode() + ") ");
-
+            else if( route.getItineraries().get(i).getJourneys().get(j - 1).getMode().compareToIgnoreCase("walk") == 0 ) {
+                System.out.print(route.getItineraries().get(i).getJourneys().get(j).getOrigin());
+                if (route.getItineraries().get(i).getJourneys().get(j).getStopCode() != null)
+                    System.out.print(" (" + route.getItineraries().get(i).getJourneys().get(j).getStopCode() + ") ");
+            }
             if(route.getItineraries().get(i).getJourneys().get(j).getMode().compareToIgnoreCase("walk") == 0){
                 System.out.println();
                 System.out.println("|");
                 System.out.println("Walk " + Math.round ( route.getItineraries().get(i).getJourneys().get(j).getTime() / 60.0) +" min");
                 System.out.println("|");
 
-                //System.out.print("|" + route.getItineraries().get(i).getJourneys().get(j).getDestination() + "| (" + (int) route.getItineraries().get(i).getJourneys().get(j).getDistance() + ") ");
             }
             else {
-                if (j < (route.getItineraries().get(i).getJourneys().size() -1) && route.getItineraries().get(i).getJourneys().get(j + 1).getStopCode() != null)
+                if (j < (route.getItineraries().get(i).getJourneys().size() -1) && route.getItineraries().get(i).getJourneys().get(j).getStopCode() != null)
                      System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + " (" + route.getItineraries().get(i).getJourneys().get(j + 1).getStopCode() + ") " + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
                 else
-                    System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination() + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
+                    System.out.print(" -> " + route.getItineraries().get(i).getJourneys().get(j).getDestination()+ " " + Math.round( route.getItineraries().get(i).getJourneys().get(j).getTime()/60.0) +" min");
 
             }
-            //j++;
 
 
         }
@@ -191,10 +186,20 @@ public class UI {
         if (myRoutes != null && myRoutes.size() > 0){
             int i = 1;
             for (Route route: myRoutes) {
-                System.out.println("->Route " + i++ + ":");
-                System.out.println("-Origin: " + route.getOrigin());
-                System.out.println("-Destination: " + route.getDestination());
-                System.out.println("-Start day: " + route.getDay() + " at " + route.getHour());
+
+                System.out.println(System.lineSeparator() + "->Route " + i++ + ":");
+                if (route.getOriginName() != null)
+                    System.out.println("-Origin: " + route.getOriginName());
+                else
+                    System.out.println("-Origin: " + route.getOrigin());
+                if (route.getDestinationName() != null)
+                    System.out.println("-Destination: " + route.getDestinationName());
+                else
+                    System.out.println("-Destination: " + route.getDestination());
+                if (route.getDepartureOrArrival() == 'd')
+                    System.out.println("-Start day: " + route.getDay() + " at " + route.getHour());
+                else
+                    System.out.println("-Arriving by day: " + route.getDay() + " at " + route.getHour());
                 System.out.println("-Max walking distance: " + route.getMaxWalkingDistance());
                 System.out.println("-Fastest combination: " + System.lineSeparator());
 
@@ -253,7 +258,7 @@ public class UI {
         System.out.println("In order to have favourite stops and stations it is necessary to create a favourite location previously.");
     }
 
-    public static void printStationsInaguarated(ArrayList<Station> stations, int year){
+    public static void printStationsInaugurated(ArrayList<Station> stations, int year){
         System.out.println("Stations inaugurated in " + year + ":");
         for(Station s: stations){
             System.out.println("-" + s.getStationName() + " (" + s.getLineName() + ")");
@@ -274,7 +279,4 @@ public class UI {
         }
     }
 
-    public static void printWaitTimeError() {
-        System.out.println("Error, stop code not valid!");
-    }
 }
