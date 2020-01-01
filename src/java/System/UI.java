@@ -10,18 +10,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ *
+ * Class: java.System.UI
+ *
+ * Prints the menus and the results of running each of the options
+ *
+ * @author Amir Azzam - amir.azzam@students.salle.url.edu
+ * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @version 28/12/2019
+ *
+ */
 public class UI {
 
+    /**
+     * prints the welcome messafe when the user's information has been successfully introduced
+     */
     public static void printWelcomeMessage(){
         System.out.println("Welcome to the TMBJson application! Please enter the requested information.");
-
     }
 
+    /**
+     * prints an error message when the users try set the origin or the
+     * destination of a route to a location that is not registered in the system
+     */
     public static void printRouteLocationError(){
         System.out.println("Sorry, this location is not valid :(" + System.lineSeparator());
-
     }
 
+    /**
+     * prints an error message when the user enters a wrong character while
+     * specifying the information of the route the want to plan
+     */
     public static void printRouteDestArrivalError(){
         System.out.println("Error! You must enter \"d\" or \"a\"!.");
 
@@ -82,7 +102,6 @@ public class UI {
     public static void printErrorNoStationsThisYear(){
         System.out.println("No subway station opened your birth year :(" + System.lineSeparator());
     }
-
 
     public static void printFavLocationTypeError(){
         System.out.println("Error! You have to enter \"home\", \"work\", \"studies\", \"leisure\" or \"culture\"." + System.lineSeparator());
