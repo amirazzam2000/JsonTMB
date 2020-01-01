@@ -119,6 +119,10 @@ public class User {
     public void addLocationHistory(Location location) {
         if (!locationHistory.contains(location))
                 locationHistory.add(location);
+        else {
+            locationHistory.remove(location);
+            locationHistory.add(location);
+        }
     }
 
     public void addFavLocation(Location location, String type){

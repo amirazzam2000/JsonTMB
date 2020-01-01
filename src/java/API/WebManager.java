@@ -7,13 +7,22 @@ import DataModel.TransportationData.*;
 import java.io.IOException;
 
 // app_id : 151d4902 , app_key : 771e0a32ea2b2631b0ad21f66a4ea564
-public class WebManager {
+public class WebManager implements Webservice{
+    private String appId;
+    private StringBuilder url;
+    public WebManager(){
+        appId = "?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564";
+    }
 
-    public static String callAllStations(){
+    @Override
+    public String callAllStations(){
         String jsonData = null;
         OkHttpClient client = new OkHttpClient();
+        url = new StringBuilder();
+        url.append("https://api.tmb.cat/v1/transit/linies/metro/estacions");
+        url.append(appId);
         Request request = new Request.Builder()
-                .url("https://api.tmb.cat/v1/transit/linies/metro/estacions?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564")
+                .url(url.toString())
                 .build();
         Response response;
 
@@ -33,11 +42,15 @@ public class WebManager {
         return jsonData;
     }
 
-    public static String callAllStops(){
+    @Override
+    public String callAllStops(){
         String jsonData = null;
         OkHttpClient client = new OkHttpClient();
+        url = new StringBuilder();
+        url.append("https://api.tmb.cat/v1/transit/parades");
+        url.append(appId);
         Request request = new Request.Builder()
-                .url("https://api.tmb.cat/v1/transit/parades?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564")
+                .url(url.toString())
                 .build();
         Response response;
 
@@ -57,11 +70,13 @@ public class WebManager {
         return jsonData;
     }
 
-    public static String callRoute(Route route){
+    @Override
+    public String callRoute(Route route){
         String jsonData = null;
         OkHttpClient client = new OkHttpClient();
-        StringBuilder url = new StringBuilder();
-        url.append("https://api.tmb.cat/v1/planner/plan?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564");
+        url = new StringBuilder();
+        url.append("https://api.tmb.cat/v1/planner/plan");
+        url.append(appId);
         url.append("&fromPlace=").append(route.getOrigin());
         url.append("&toPlace=").append(route.getDestination());
         url.append("&date=").append(route.getDay());
@@ -96,13 +111,14 @@ public class WebManager {
         return jsonData;
     }
 
-    public static String callLine(String line){
+    @Override
+    public String callLine(String line){
         String jsonData = null;
         OkHttpClient client = new OkHttpClient();
-        StringBuilder url = new StringBuilder();
+        url = new StringBuilder();
         url.append("https://api.tmb.cat/v1/ibus/stops/");
         url.append(line);
-        url.append("?app_id=151d4902&app_key=771e0a32ea2b2631b0ad21f66a4ea564");
+        url.append(appId);
 
         Request request = new Request.Builder()
                 .url(url.toString())

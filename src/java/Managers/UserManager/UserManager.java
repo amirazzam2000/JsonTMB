@@ -113,4 +113,12 @@ public class UserManager {
         return users.get(0).getFavLocations();
     }
 
+    public void deleteFavLocation(Location location) {
+        for (int i = 0; i < users.get(0).getFavLocations().size(); i++) {
+            if (location.getName().compareToIgnoreCase(users.get(0).getFavLocations().get(i).getLocation().getName()) == 0 && location.getLatitude() == users.get(0).getFavLocations().get(i).getLatitude() && location.getLongitude() == users.get(0).getFavLocations().get(i).getLongitude()) {
+                users.get(0).getFavLocations().remove(i);
+                break;
+            }
+        }
+    }
 }

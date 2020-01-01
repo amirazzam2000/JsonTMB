@@ -1,6 +1,7 @@
 package System;
 
 import API.WebManager;
+import API.Webservice;
 import DataModel.LocationData.*;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;
@@ -34,6 +35,8 @@ public class MainSystem {
         int firstOption = 6;
         String secondOption;
         String input;
+        WebManager webManager = new WebManager();
+
         // Registering a new user:
         UI.printWelcomeMessage();
 
@@ -125,11 +128,11 @@ public class MainSystem {
                                 if (users.getFavLocations() != null && users.getFavLocations().size() > 0) {
                                     for (FavLocation favLoc : users.getFavLocations()) {
                                         String JsonString;
-                                        JsonString = WebManager.callAllStations();
+                                        JsonString = webManager.callAllStations();
                                         ArrayList<Station> stations = null;
                                         if (JsonString != null)
                                             stations = JsonStationReader.readFavStations(JsonString, favLoc);
-                                        JsonString = WebManager.callAllStops();
+                                        JsonString = webManager.callAllStops();
                                         ArrayList<Stop> stops = null;
                                         if (JsonString != null) {
                                             stops = JsonStopsReader.readFavStops(JsonString, favLoc);
@@ -144,7 +147,7 @@ public class MainSystem {
                                 break;
                             case "e":
                                 String JsonString;
-                                JsonString = WebManager.callAllStations();
+                                JsonString = webManager.callAllStations();
                                 ArrayList<Station> stations = null;
                                 if (JsonString != null)
                                     stations = JsonStationReader.readInauguratedStations(JsonString, users.getYear());
@@ -178,17 +181,45 @@ public class MainSystem {
                             if (favLocOption.equalsIgnoreCase("yes") || favLocOption.equalsIgnoreCase("no")) {
                                 if (favLocOption.equalsIgnoreCase("yes")) {
                                     String type;
-                                    do {
-                                        System.out.println("Type (home / work / studies / leisure / culture):");
-                                        type = scanner.nextLine();
-                                        flag = type.equalsIgnoreCase("home") || type.equalsIgnoreCase("work") || type.equalsIgnoreCase("studies") || type.equalsIgnoreCase("leisure") || type.equalsIgnoreCase("culture");
-                                        if (!flag) {
-                                            UI.printFavLocationTypeError();
-                                        } else {
-                                            users.addFavLocation(location, type);
-                                            System.out.println(location.getName() + " has been assigned as a new favorite location.");
+                                    boolean goIn = true;
+                                    boolean exist = false;
+                                    for (FavLocation fav : users.getFavLocations()) {
+                                        if (fav.containLocation(location)) {
+                                            exist = true;
+                                            break;
                                         }
-                                    } while (!flag);
+                                    }
+                                    if (exist) {
+                                        goIn = false;
+                                        String option ;
+                                        System.out.println("this location is already A favorite location ... would you ike to change the type of your favorite location? (yes/no)");
+                                        scanner = new Scanner(System.in);
+                                        option = scanner.nextLine();
+                                        do{
+                                            if (option.equalsIgnoreCase("yes")){
+                                                goIn = true;
+                                                users.deleteFavLocation(location);
+                                                break;
+                                            }
+                                            else if(!(option.equalsIgnoreCase("yes") || option.equalsIgnoreCase("no"))){
+                                                UI.printInputErrorYN();
+                                            }
+
+                                        } while (!(option.equalsIgnoreCase("yes") || option.equalsIgnoreCase("no")));
+                                    }
+                                    if(goIn){
+                                        do {
+                                            System.out.println("Type (home / work / studies / leisure / culture):");
+                                            type = scanner.nextLine();
+                                            flag = type.equalsIgnoreCase("home") || type.equalsIgnoreCase("work") || type.equalsIgnoreCase("studies") || type.equalsIgnoreCase("leisure") || type.equalsIgnoreCase("culture");
+                                            if (!flag) {
+                                                UI.printFavLocationTypeError();
+                                            } else {
+                                                users.addFavLocation(location, type);
+                                                System.out.println(location.getName() + " has been assigned as a new favorite location.");
+                                            }
+                                        } while (!flag);
+                                    }
                                 }
                             } else
                                 UI.printInputErrorYN();
@@ -284,7 +315,7 @@ public class MainSystem {
                             }
                         }while (flag);
                         String JsonString;
-                        JsonString = WebManager.callRoute(route);
+                        JsonString = webManager.callRoute(route);
                         if (JsonString != null) {
                             try {
                                 route.setItineraries(JsonRouteReader.readRoute(JsonString).getItineraries());
@@ -309,7 +340,7 @@ public class MainSystem {
                         scanner = new Scanner(System.in);
                         System.out.println("Enter the stop code:");
                         stopId = scanner.nextLine();
-                        String JsonString = WebManager.callLine(stopId);
+                        String JsonString = webManager.callLine(stopId);
                         if (JsonString != null) {
                             try {
                                 lines = JsonLineReader.readStopLine(JsonString, stopId);

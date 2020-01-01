@@ -84,10 +84,6 @@ public class UI {
     }
 
 
-    public static void printLocationExistsError(){
-        System.out.println("Error! This location already exists." + System.lineSeparator());
-    }
-
     public static void printFavLocationTypeError(){
         System.out.println("Error! You have to enter \"home\", \"work\", \"studies\", \"leisure\" or \"culture\"." + System.lineSeparator());
     }

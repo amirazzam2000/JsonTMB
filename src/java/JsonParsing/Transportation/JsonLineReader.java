@@ -5,11 +5,20 @@ import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
+
 public class JsonLineReader {
-    public static ArrayList<Line> readStopLine(String input, String stopId) throws LineException {
+    /**
+     * @param input a Json string that contains the information the Bus lines that stop in a specified stations
+     * @param stopId the code of the stop we are receiving its information
+     * @return an Array of all the Bus lines that stop at the specified stop
+     * @throws LineException if the stop code specified did not exist after being sent to the API
+     */
+    public static ArrayList<Line> readStopLine(@NotNull String input, String stopId) throws LineException {
         ArrayList<Line> lines = new ArrayList<>();
         Line auxLine = new Line();
 

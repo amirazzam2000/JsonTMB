@@ -13,6 +13,9 @@ public class FavLocation {
         this.longitude = location.getLongitude();
     }
 
+    public boolean containLocation(Location location){
+        return location.getName().compareToIgnoreCase(this.location.getName()) == 0 && location.getLatitude() == this.latitude && location.getLongitude() == this.longitude ;
+    }
     public float getLatitude() {
         return latitude;
     }
