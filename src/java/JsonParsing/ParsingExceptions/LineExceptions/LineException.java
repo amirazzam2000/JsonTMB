@@ -1,4 +1,4 @@
-package JsonParsing.ParsingExceptions;
+package JsonParsing.ParsingExceptions.LineExceptions;
 
 public class LineException extends Exception{
     String message;

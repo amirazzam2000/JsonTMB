@@ -149,6 +149,7 @@ public class UI {
         int i = route.getShortestRoute(route.getMaxWalkingDistance());
 
         System.out.println("Time taken: " +  Math.round(route.getItineraries().get(i).getDuration() / 60.0) + " min");
+
         if (route.getItineraries().get(i).getMaxWalkDistance() > route.getMaxWalkingDistance()){
             System.out.println("we couldn't find a route within the max walking distance you set. Sorry for the inconvenience!");
             System.out.println("this is a suggested route: (the suggested route is the fastest route)");

@@ -1,14 +1,11 @@
 package Managers.UserManager;
 
-import API.WebManager;
 import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
 import DataModel.TransportationData.Stop;
 import DataModel.User.User;
-import JsonParsing.Transportation.JsonStationReader;
-import JsonParsing.Transportation.JsonStopsReader;
 import Managers.Location.LocationManager;
 
 import java.util.ArrayList;
@@ -85,7 +82,7 @@ public class UserManager {
         return users.get(0).getLocationHistory();
     }
 
-    public boolean getFavStationsAndStops(FavLocation location){
+    public boolean getFavStationsAndStops(FavLocation location, ArrayList<Station> stations, ArrayList<Stop> stops){
         boolean flag =false;
 
         for (Station station: users.get(0).getStations()) {
@@ -101,18 +98,9 @@ public class UserManager {
             }
         }
         if (!flag) {
-            String JsonString;
-            JsonString = WebManager.callAllStations();
-            ArrayList<Station> stations = null;
-            if (JsonString != null)
-                stations = JsonStationReader.readFavStations(JsonString, location);
-            users.get(0).addStations(stations);
-            JsonString = WebManager.callAllStops();
-            ArrayList<Stop> stops = null;
-            if (JsonString != null)
-                stops = JsonStopsReader.readFavStops(JsonString, location);
-            users.get(0).addStops(stops);
 
+            users.get(0).addStations(stations);
+            users.get(0).addStops(stops);
             users.get(0).sortStations();
             users.get(0).sortStops();
             if (stations == null || stations.size() == 0 || stops == null || stops.size() == 0 )

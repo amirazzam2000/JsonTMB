@@ -1,9 +1,7 @@
 package JsonParsing.Transportation;
 
-import DataModel.LocationData.FavLocation;
 import DataModel.TransportationData.Line;
-import DataModel.TransportationData.Stop;
-import JsonParsing.ParsingExceptions.LineException;
+import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

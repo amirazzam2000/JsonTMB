@@ -24,10 +24,11 @@ public class WebManager {
                 jsonData = response.body().string();
             }
 
-            //System.out.println(jsonData);
+
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("there was a problem connecting to the API, please check you connection and try again");
         }
         return jsonData;
     }
@@ -50,7 +51,8 @@ public class WebManager {
             //System.out.println(jsonData);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("there was a problem connecting to the API, please check you connection and try again");
         }
         return jsonData;
     }
@@ -88,7 +90,8 @@ public class WebManager {
             //System.out.println(jsonData);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("there was a problem connecting to the API, please check you connection and try again");
         }
         return jsonData;
     }
@@ -116,7 +119,8 @@ public class WebManager {
             //System.out.println(jsonData);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("there was a problem connecting to the API, please check you connection and try again");
         }
         return jsonData;
     }

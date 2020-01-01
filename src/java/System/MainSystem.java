@@ -5,12 +5,14 @@ import DataModel.LocationData.*;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;
 import DataModel.TransportationData.Station;
-import JsonParsing.ParsingExceptions.LineException;
+import DataModel.TransportationData.Stop;
+import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;
 import JsonParsing.Transportation.JsonLineReader;
 import JsonParsing.Transportation.JsonRouteReader;
 import JsonParsing.Transportation.JsonStationReader;
+import JsonParsing.Transportation.JsonStopsReader;
 import Managers.Location.LocationManager;
 import Managers.UserManager.UserManager;
 
@@ -122,7 +124,17 @@ public class MainSystem {
                             case "d":
                                 if (users.getFavLocations() != null && users.getFavLocations().size() > 0) {
                                     for (FavLocation favLoc : users.getFavLocations()) {
-                                        boolean print = users.getFavStationsAndStops(favLoc);
+                                        String JsonString;
+                                        JsonString = WebManager.callAllStations();
+                                        ArrayList<Station> stations = null;
+                                        if (JsonString != null)
+                                            stations = JsonStationReader.readFavStations(JsonString, favLoc);
+                                        JsonString = WebManager.callAllStops();
+                                        ArrayList<Stop> stops = null;
+                                        if (JsonString != null) {
+                                            stops = JsonStopsReader.readFavStops(JsonString, favLoc);
+                                        }
+                                        boolean print = users.getFavStationsAndStops(favLoc, stations, stops);
                                         UI.printFavStopsAndStations(users.getUser(), favLoc, print);
                                     }
                                 }
@@ -173,10 +185,8 @@ public class MainSystem {
                                         if (!flag) {
                                             UI.printFavLocationTypeError();
                                         } else {
-                                            if (location != null) {
-                                                users.addFavLocation(location, type);
-                                                System.out.println(location.getName() + " has been assigned as a new favorite location.");
-                                            }
+                                            users.addFavLocation(location, type);
+                                            System.out.println(location.getName() + " has been assigned as a new favorite location.");
                                         }
                                     } while (!flag);
                                 }
