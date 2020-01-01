@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="P1_OOPD" />
         <module name="Code" />
+        <module name="TMBJson" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
