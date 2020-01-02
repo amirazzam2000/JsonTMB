@@ -349,6 +349,21 @@ public class MainSystem {
                             }
                         }
                     }while(flag);
+                    if (users.getFavLocations() != null && users.getFavLocations().size() > 0) {
+                        for (FavLocation favLoc : users.getFavLocations()) {
+                            String JsonString;
+                            JsonString = webManager.callAllStations();
+                            ArrayList<Station> stations = null;
+                            if (JsonString != null)
+                                stations = JsonStationReader.readFavStations(JsonString, favLoc);
+                            JsonString = webManager.callAllStops();
+                            ArrayList<Stop> stops = null;
+                            if (JsonString != null) {
+                                stops = JsonStopsReader.readFavStops(JsonString, favLoc);
+                            }
+                            users.getFavStationsAndStops(favLoc, stations, stops);
+                        }
+                    }
                     UI.printWaitTime(stopId, lines, users.getUser());
                     break;
                 case 5:

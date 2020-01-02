@@ -372,7 +372,10 @@ public class UI {
 
     /**
      * prints the waiting time for all the bus lines that stop at the
-     * specified stop
+     * specified stop. Moreover, it will print the Lines ordered by the
+     * waiting time, so the line with the least amount of time left will
+     * print first
+     *
      * @param stopId the code of the stop we are interested in knowing the
      *               information about
      * @param lines all the lines that stop at the specified stop

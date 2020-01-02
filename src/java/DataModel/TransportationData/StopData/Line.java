@@ -40,7 +40,16 @@ public class Line implements Comparator<Line>{
         this.timeLeftMin = that.timeLeftMin;
         this.stopId =  that.stopId;
     }
-//TODO: comment this
+
+    /**
+     * compares two Line according to how much time left for the Line to
+     * arrive at the station
+     * @param o1 the first Line to be compared
+     * @param o2 the second Line to be compared
+     * @return a positive integer if the second Line will come sooner,
+     *         a negative integer if the first Line will come sooner,
+     *         a zero if both times are equal
+     */
     @Override
     public int compare(Line o1, Line o2) {
         return (o1.timeLeftMin - o2.timeLeftMin);
