@@ -5,11 +5,11 @@ package DataModel.LocationData;
  *
  * Class: java.DataModel.LocationData.Location
  *
- * <br/>Stores all the information about a specific location and offers the
+ * <p>Stores all the information about a specific location and offers the
  * ability to read and change this information
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see Managers.Location.LocationManager

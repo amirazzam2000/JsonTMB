@@ -6,11 +6,11 @@ import java.util.ArrayList;
  *
  * Class: java.DataModel.TransportationData.RouteData.Itinerary
  *
- * <br/>stores all the information about a route's itinerary. This class also
+ * <p>stores all the information about a route's itinerary. This class also
  * allows us to read and modify the information of the itinerary.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see Route

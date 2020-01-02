@@ -25,11 +25,11 @@ import java.util.Scanner;
  *
  * Class: java.Managers.UserManager.UserManager
  *
- * <br/>Connects all the different classes and manages the main menu and its
+ * <p>Connects all the different classes and manages the main menu and its
  * functionalities
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 30/12/2019
  *
  * @see Location

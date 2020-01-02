@@ -13,10 +13,10 @@ import java.util.ArrayList;
  *
  * Class: java.JsonParsing.Transportation.JsonStationReader
  *
- * <br/>Parse the Station information form a Json String
+ * <p>Parse the Station information form a Json String
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see Station

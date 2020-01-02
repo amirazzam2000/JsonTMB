@@ -14,12 +14,12 @@ import java.util.List;
  *
  * Class: java.DataModel.User.User
  *
- * <br/>Stores all the information about one user, it also stores the user's
- * favorite locations, stops, stations and routes.<br/>This class also allows
+ * <p>Stores all the information about one user, it also stores the user's
+ * favorite locations, stops, stations and routes.<p>This class also allows
  * modifying and reading the information of the user.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see Managers.UserManager.UserManager
@@ -74,10 +74,10 @@ public class User {
      * adds a location to the user's location search history, as each time a
      * user search fo a new location it should be saved in the search history
      * in the user's profile.
-     * <br/>Moreover, the location history list functions like a stack, so
+     * <p>Moreover, the location history list functions like a stack, so
      * every time a new location is added it has to be added at the end of
      * the list.
-     * <br/>However, this method takes care of repeated elements, which means
+     * <p>However, this method takes care of repeated elements, which means
      * that adding a location twice doesn't duplicate the location but instead,
      * the second time it's added it will just move it to the end of the list.
      *

@@ -6,14 +6,14 @@ import java.util.Comparator;
  *
  * Class: java.DataModel.TransportationData.StopData.Stop
  *
- * <br/>Stores all the information about a specific Stop and offers the
+ * <p>Stores all the information about a specific Stop and offers the
  * ability to read, change and compare this information with the information
- * of other Stop.<br/>
+ * of other Stop.<p>
  * this class implements the {@link Comparator} interface in order to be able
- * to sort objects from this class if needed.<br/>
+ * to sort objects from this class if needed.<p>
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 29/12/2019
  *
  *
@@ -32,7 +32,7 @@ public class Line implements Comparator<Line>{
     /**
      * constructs a Line from the information of another Line(creates a copy
      * of the Line specified in the parameter)
-     * @param that
+     * @param that the Line to be copied
      */
     public Line(Line that) {
         this.destination = that.destination;

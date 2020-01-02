@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Prints the menus and the results of running each of the options
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 28/12/2019
  *
  */

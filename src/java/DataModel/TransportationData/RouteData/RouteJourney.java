@@ -4,14 +4,14 @@ package DataModel.TransportationData.RouteData;
  *
  * Class: java.DataModel.TransportationData.RouteData.Route
  *
- * <br/>Stores all the information about one Journey, the origin and
+ * <p>Stores all the information about one Journey, the origin and
  * destination, along side other secondary information that is important to
  * define a journey and make it specific.
- * <br/>This class allows us to modify and read the information stored in a
+ * <p>This class allows us to modify and read the information stored in a
  * journey
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see Itinerary

@@ -15,9 +15,9 @@ import java.util.List;
  *
  * Class: java.Managers.UserManager.UserManager
  *
- * <br/>Manages the data of all the user objects, and stores all the
+ * <p>Manages the data of all the user objects, and stores all the
  * users registered in the system.
- * <br/>In a nutshell, This class allows to modify, read and analyze the data
+ * <p>In a nutshell, This class allows to modify, read and analyze the data
  * of all the users in the system.
  *
  * @apiNote the system can only have one user as we did not implement the
@@ -27,7 +27,7 @@ import java.util.List;
  * explains why we always get the user at position 0
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
  * @see User

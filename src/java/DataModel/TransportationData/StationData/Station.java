@@ -6,14 +6,14 @@ import java.util.Comparator;
  *
  * Class: java.DataModel.TransportationData.StationData.Station
  *
- * <br/>Stores all the information about a specific Station and offers the
+ * <p>Stores all the information about a specific Station and offers the
  * ability to read, change and compare this information with the information
- * of other stations.<br/>
+ * of other stations.<p>
  * this class implements the {@link Comparator} interface in order to be able
- * to sort objects from this class if needed.<br/>
+ * to sort objects from this class if needed.<p>
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
- * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 29/12/2019
  *
  *
