@@ -12,6 +12,7 @@ package DataModel.LocationData;
  * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
+ * @see Managers.Location.LocationManager
  */
 public class Location {
     private String name ;

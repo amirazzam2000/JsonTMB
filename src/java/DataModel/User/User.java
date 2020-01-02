@@ -22,7 +22,7 @@ import java.util.List;
  * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
  * @version 27/12/2019
  *
- *
+ * @see Managers.UserManager.UserManager
  */
 public class User {
     private String name;
@@ -111,20 +111,35 @@ public class User {
 
     /**
      *  adds an array of stops to the user's Favorite stops and stations
-     * @param stops
+     * @param stops an array list that contains all the favorite stops to be
+     *              added
      */
     public void addStops(ArrayList<Stop> stops){
         this.stops.addAll(stops);
     }
 
+    /**
+     *  adds an array of stations to the user's Favorite stops and stations
+     * @param stations an array list that contains all the favorite stations to be
+     *              added
+     */
     public void addStations(ArrayList<Station> stations){
         this.stations.addAll(stations);
     }
 
+    /**
+     * sorts al the user's favorite stations according to their distance from
+     * the favorite location they are close to.
+     */
     public void sortStations(){
         Station s = new Station();
         stations.sort(s);
     }
+
+    /**
+     * sorts al the user's favorite stops according to their distance from
+     * the favorite location they are close to.
+     */
     public void sortStops(){
         Stop s = new Stop();
         stops.sort(s);
