@@ -1,6 +1,7 @@
 package JsonParsing.Transportation;
 
 import DataModel.TransportationData.StopData.Line;
+import DataModel.TransportationData.StopData.Stop;
 import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -9,9 +10,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-
+/**
+ *
+ * Class: java.JsonParsing.Transportation.JsonStopsReader
+ *
+ * <br/>Parse the Bus Lines information form a Json String
+ *
+ * @author Amir Azzam - amir.azzam@students.salle.url.edu
+ * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @version 27/12/2019
+ *
+ * @see Line
+ * @see Stop
+ */
 public class JsonLineReader {
     /**
+     * reads all the information about the bus lines that stop at a specified
+     * stop
      * @param input a Json string that contains the information the Bus lines that stop in a specified stations
      * @param stopId the code of the stop we are receiving its information
      * @return an Array of all the Bus lines that stop at the specified stop
@@ -20,10 +35,13 @@ public class JsonLineReader {
     public static ArrayList<Line> readStopLine(@NotNull String input, String stopId) throws LineException {
         ArrayList<Line> lines = new ArrayList<>();
         Line auxLine = new Line();
-
+        //reading the information in the Json String and putting it in a json
+        // element
         JsonElement json = JsonParser.parseString(input);
         JsonObject jsonLines = json.getAsJsonObject();
 
+        // for each line in the station read all of its information and add
+        // it to the lines array
         if(jsonLines.has("status")){
             for (JsonElement line: jsonLines.get("data").getAsJsonObject().get("ibus").getAsJsonArray()) {
                 auxLine.setStopId(stopId);

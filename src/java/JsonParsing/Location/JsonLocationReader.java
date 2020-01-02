@@ -20,6 +20,9 @@ public class JsonLocationReader {
      * Parse the information from the location json file and store them in the location manger
      *
      * @return   an array of all the locations contained in the location.json file stored in the resources folder
+     * @throws FileNotFoundException if the file was not found or if the file
+     * name is wrong
+     *
      * */
     public static LocationManager readLocations() throws FileNotFoundException {
         LocationManager locations = new LocationManager();
@@ -79,10 +82,6 @@ public class JsonLocationReader {
                     LocationManager.add(auxLocation);
 
                 }
-
-
-
-
         return  locations;
     }
 

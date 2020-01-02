@@ -7,6 +7,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
+// TODO : comment this
 // app_id : 151d4902 , app_key : 771e0a32ea2b2631b0ad21f66a4ea564
 public class WebManager implements Webservice{
     private String appId;
