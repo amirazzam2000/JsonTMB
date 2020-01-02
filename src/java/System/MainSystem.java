@@ -2,10 +2,10 @@ package System;
 
 import API.WebManager;
 import DataModel.LocationData.*;
-import DataModel.TransportationData.Line;
-import DataModel.TransportationData.Route;
-import DataModel.TransportationData.Station;
-import DataModel.TransportationData.Stop;
+import DataModel.TransportationData.StopData.Line;
+import DataModel.TransportationData.RouteData.Route;
+import DataModel.TransportationData.StationData.Station;
+import DataModel.TransportationData.StopData.Stop;
 import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;

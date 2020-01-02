@@ -1,7 +1,10 @@
 package System;
 
 import DataModel.LocationData.*;
-import DataModel.TransportationData.*;
+import DataModel.TransportationData.RouteData.Route;
+import DataModel.TransportationData.StationData.Station;
+import DataModel.TransportationData.StopData.Line;
+import DataModel.TransportationData.StopData.Stop;
 import DataModel.User.User;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
  *
  */
 public class UI {
+
 
     /**
      * prints the welcome message when you lunch the program
@@ -376,12 +380,15 @@ public class UI {
      */
     public static void printWaitTime(String stopId, ArrayList<Line> lines, User user){
         if (lines != null){
+
             for (Stop stop: user.getStops()) {
                 if (stop.getStopId().compareToIgnoreCase(stopId) == 0){
                     System.out.println("Favourite stop!");
                     break;
                 }
             }
+            Line s = new Line();
+            lines.sort(s);
             for (Line line : lines) {
                 System.out.println(line.getLineName() + " - " + line.getDestination() + " - " + line.getTimeLeftMin() + " min");
             }

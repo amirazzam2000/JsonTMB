@@ -3,9 +3,9 @@ package DataModel.LocationData;
 
 /**
  *
- * Class: java.DataModel.LocationData.Location
+ * Class: java.DataModel.LocationData.Hotel
  *
- * Stores all the information about the hotel locations and offers the
+ * <br/>Stores all the information about the hotel locations and offers the
  * ability to read and change this information
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
@@ -14,7 +14,7 @@ package DataModel.LocationData;
  * @see DataModel.LocationData.Location
  */
 public class Hotel extends Location {
-    int stars;
+    private int stars;
 
     /**
      * constructs a hotel with the information specified in the parameters

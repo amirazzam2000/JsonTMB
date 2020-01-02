@@ -1,9 +1,8 @@
 package JsonParsing.Transportation;
 
-import DataModel.TransportationData.Itinerary;
-import DataModel.TransportationData.Route;
-import DataModel.TransportationData.RouteJourney;
-import JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions;
+import DataModel.TransportationData.RouteData.Itinerary;
+import DataModel.TransportationData.RouteData.Route;
+import DataModel.TransportationData.RouteData.RouteJourney;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;
 import com.google.gson.JsonElement;

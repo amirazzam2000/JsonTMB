@@ -1,12 +1,11 @@
 package JsonParsing.Transportation;
 
-import DataModel.TransportationData.Line;
+import DataModel.TransportationData.StopData.Line;
 import JsonParsing.ParsingExceptions.LineExceptions.LineException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 

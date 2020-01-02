@@ -1,10 +1,3 @@
-import API.WebManager;
-import API.Webservice;
-import DataModel.TransportationData.Station;
-import DataModel.TransportationData.Stop;
-
-import java.util.ArrayList;
-
 public class Test {
     public static void main(String[] args) {
 /*        Route route = new Route();

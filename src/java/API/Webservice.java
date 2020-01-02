@@ -1,6 +1,6 @@
 package API;
 
-import DataModel.TransportationData.Route;
+import DataModel.TransportationData.RouteData.Route;
 
 public interface Webservice {
 

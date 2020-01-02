@@ -1,7 +1,21 @@
-package DataModel.TransportationData;
+package DataModel.TransportationData.RouteData;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * Class: java.DataModel.TransportationData.RouteData.Route
+ *
+ * <br/>Stores all the information about a specific route, with all the different
+ * possible itineraries. <br/>This class also offers the ability to Modify,
+ * and read the information of a route.
+ *
+ * @author Amir Azzam - amir.azzam@students.salle.url.edu
+ * @author <br/>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @version 27/12/2019
+ *
+ * @see Itinerary
+ */
 public class Route {
     private String origin;
     private String originName;
@@ -14,19 +28,16 @@ public class Route {
     private ArrayList<Itinerary> itineraries;
 
 
-    public Route(String origin, String destination, char departureOrArrival, String day, String hour, float maxWalkingDistance, ArrayList<Itinerary> itineraries) {
-        this.origin = origin;
-        this.destination = destination;
-        this.departureOrArrival = departureOrArrival;
-        this.day = day;
-        this.hour = hour;
-        this.maxWalkingDistance = maxWalkingDistance;
-        this.itineraries = itineraries;
-    }
-
+    /**
+     * construct a rout out of the information of another route(creates a
+     * copy of the other route)
+     * @param route the route to be copied
+     */
     public Route(Route route) {
         this.origin = route.origin;
+        this.originName = route.originName;
         this.destination = route.destination;
+        this.destinationName = route.destinationName;
         this.departureOrArrival = route.departureOrArrival;
         this.day = route.day;
         this.hour = route.hour;
@@ -34,6 +45,9 @@ public class Route {
         this.itineraries = route.itineraries;
     }
 
+    /**
+     * constructs an empty route with all the attributes initialized
+     */
     public Route() {
         this.origin = null;
         this.originName = null;
@@ -43,6 +57,32 @@ public class Route {
         this.hour = null;
         this.maxWalkingDistance = 0;
         itineraries = new ArrayList<>();
+    }
+
+    /**
+     * adds an itinerary to the route's itineraries
+     * @param itinerary the itinerary be added
+     */
+    public void addItineraries(Itinerary itinerary){
+        itineraries.add(itinerary);
+    }
+
+    public int getShortestRoute(float maxWalkingDistance){
+        int i = 0;
+        int shortest = Integer.MAX_VALUE;
+        int time ;
+        for (int j = 0; j < itineraries.size() ; j++) {
+            time = 0;
+            for (RouteJourney journey: itineraries.get(j).getJourneys()) {
+                time += journey.getTime();
+            }
+            if (time < shortest && itineraries.get(j).getMaxWalkDistance() <= maxWalkingDistance){
+                shortest = time;
+                i = j;
+            }
+        }
+
+        return i;
     }
 
     public String getOriginName() {
@@ -59,10 +99,6 @@ public class Route {
 
     public void setDestinationName(String destinationName) {
         this.destinationName = destinationName;
-    }
-
-    public void addItineraries(Itinerary itinerary){
-        itineraries.add(itinerary);
     }
 
     public ArrayList<Itinerary> getItineraries() {
@@ -119,26 +155,5 @@ public class Route {
 
     public void setMaxWalkingDistance(float maxWalkingDistance) {
         this.maxWalkingDistance = maxWalkingDistance;
-    }
-
-    public int getShortestRoute(float maxWalkingDistance){
-        int i = 0;
-        int shortest = Integer.MAX_VALUE;
-        int time ;
-        for (int j = 0; j < itineraries.size() ; j++) {
-            //time = itineraries.get(j).getDuration();
-            time = 0;
-            for (RouteJourney journey: itineraries.get(j).getJourneys()
-                 ) {
-                time += journey.time;
-            }
-            if (time < shortest && itineraries.get(j).getMaxWalkDistance() <= maxWalkingDistance){
-                shortest = time;
-                i = j;
-            }
-        }
-
-        //itineraries.get(i).setDuration(shortest);
-        return i;
     }
 }

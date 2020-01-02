@@ -2,14 +2,12 @@ package DataModel.User;
 
 import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
-import DataModel.TransportationData.Route;
-import DataModel.TransportationData.Station;
-import DataModel.TransportationData.Stop;
+import DataModel.TransportationData.RouteData.Route;
+import DataModel.TransportationData.StationData.Station;
+import DataModel.TransportationData.StopData.Stop;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Stack;
 
 public class User {
     String name;

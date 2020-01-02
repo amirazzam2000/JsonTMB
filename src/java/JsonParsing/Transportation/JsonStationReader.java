@@ -1,7 +1,7 @@
 package JsonParsing.Transportation;
 
 import DataModel.LocationData.FavLocation;
-import DataModel.TransportationData.Station;
+import DataModel.TransportationData.StationData.Station;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
