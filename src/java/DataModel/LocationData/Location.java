@@ -15,7 +15,7 @@ package DataModel.LocationData;
  */
 public class Location {
     String name ;
-    float[] coordinates;
+    double[] coordinates;
     String description;
 
 
@@ -25,7 +25,7 @@ public class Location {
      */
     public Location(){
         name = null;
-        coordinates = new float[2];
+        coordinates = new double[2];
         description = null;
     }
 
@@ -35,7 +35,7 @@ public class Location {
      * @param coordinates the coordinates of the location to be created
      * @param description the discription of the location to be created
      */
-    public Location(String name, float[] coordinates, String description) {
+    public Location(String name, double[] coordinates, String description) {
         this.name = name;
         this.coordinates = coordinates;
         this.description = description;
@@ -51,7 +51,7 @@ public class Location {
      */
     public Location(String name, float longitude, float latitude , String description) {
         this.name = name;
-        this.coordinates = new  float[2];
+        this.coordinates = new double[2];
         this.coordinates[0] = latitude;
         this.coordinates[1] = longitude;
         this.description = description;
@@ -65,15 +65,15 @@ public class Location {
         this.name = name;
     }
 
-    public float[] getCoordinates() {
+    public double[] getCoordinates() {
         return coordinates;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return coordinates[0];
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return coordinates[1];
     }
 
@@ -86,7 +86,7 @@ public class Location {
     }
 
 
-    public void setCoordinates(float[] coordinates) {
+    public void setCoordinates(double[] coordinates) {
         this.coordinates = coordinates;
     }
 

@@ -1,7 +1,6 @@
 package System;
 
 import API.WebManager;
-import API.Webservice;
 import DataModel.LocationData.*;
 import DataModel.TransportationData.Line;
 import DataModel.TransportationData.Route;

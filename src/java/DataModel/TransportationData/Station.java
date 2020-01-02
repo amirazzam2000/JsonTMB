@@ -3,7 +3,7 @@ package DataModel.TransportationData;
 import java.util.Comparator;
 
 public class Station implements Comparator<Station> {
-    float[] coordinates;
+    double[] coordinates;
     String stationName;
     String stationId;
     String Date;
@@ -29,7 +29,7 @@ public class Station implements Comparator<Station> {
         this.locationName = that.locationName;
     }
     public Station(){
-        coordinates = new float[2];
+        coordinates = new double[2];
         stationName = null;
         stationId = null;
         Date = null;
@@ -44,11 +44,11 @@ public class Station implements Comparator<Station> {
         this.distance = distance;
     }
 
-    public float[] getCoordinates() {
+    public double[] getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(float[] coordinates) {
+    public void setCoordinates(double[] coordinates) {
         this.coordinates = coordinates;
     }
 

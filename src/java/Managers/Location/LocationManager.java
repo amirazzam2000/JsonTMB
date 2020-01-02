@@ -16,7 +16,7 @@ public class LocationManager {
         locations.add(location);
     }
 
-    public static boolean checkCoordinates(float latitude, float longitude){
+    public static boolean checkCoordinates(double latitude, double longitude){
         return (latitude >= -180 && latitude <= 180) && (longitude >= -90 &&  longitude <= 90);
 
     }
