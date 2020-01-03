@@ -32,7 +32,7 @@ public class JsonLineReader {
      * @return an Array of all the Bus lines that stop at the specified stop
      * @throws LineException if the stop code specified did not exist after being sent to the API
      */
-    public static ArrayList<Line> readStopLine(@NotNull String input, String stopId) throws LineException {
+    public static ArrayList<Line> readStopLine( String input, String stopId) throws LineException {
         ArrayList<Line> lines = new ArrayList<>();
         Line auxLine = new Line();
         //reading the information in the Json String and putting it in a json
