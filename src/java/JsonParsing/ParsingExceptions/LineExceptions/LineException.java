@@ -22,7 +22,7 @@ import DataModel.TransportationData.RouteData.Route;
  * @see JsonParsing.Transportation.JsonLineReader
  */
 public class LineException extends Exception{
-    String message;
+    private String message;
 
     /**
      * Constructs a <code>LineException</code> with the

@@ -2,6 +2,8 @@ package JsonParsing.ParsingExceptions.RouteExceptions;
 
 import DataModel.TransportationData.RouteData.Route;
 
+import java.security.PrivateKey;
+
 /**
  *
  * Class: java.JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions
@@ -21,7 +23,7 @@ import DataModel.TransportationData.RouteData.Route;
  * @see JsonParsing.Transportation.JsonRouteReader
  */
 public class RouteExceptions extends Exception {
-    String message;
+    private String message;
     /**
      * Constructs a <code>RouteExceptions</code> with the
      * specified detail message. The string <code>message</code> can be

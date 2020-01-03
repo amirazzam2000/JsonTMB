@@ -24,7 +24,7 @@ import DataModel.TransportationData.RouteData.Route;
  *
  */
 public class RouteWrongParameter extends RouteExceptions {
-    String message;
+    private String message;
 
     /**
      * Constructs a <code>RouteWrongParameter</code> with the

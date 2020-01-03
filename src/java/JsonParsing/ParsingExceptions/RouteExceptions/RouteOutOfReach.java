@@ -23,7 +23,7 @@ import DataModel.TransportationData.RouteData.Route;
  * @see JsonParsing.Transportation.JsonRouteReader
  */
 public class RouteOutOfReach extends RouteExceptions {
-    String message;
+    private String message;
 
     /**
      * Constructs a <code>RouteOutOfReach</code> with the
