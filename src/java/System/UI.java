@@ -140,7 +140,6 @@ public class UI {
         System.out.println("Select an option: ");
     }
 
-    //TODO : fix comment
 
     /**
      * prints all the locations the user has created
@@ -160,14 +159,13 @@ public class UI {
             System.out.println("You don't have any location created.");
         }
     }
-    // TODO : fix comment
 
     /**
-     * prints all the locatino s that the user has searched for using option
+     * prints all the locations that the user has searched for using option
      * 2 (Search locations)
      * @param LocationHistory contain all the locations the user searched for
-     *                        ordered according to when the user searched for
-     *                        them.
+     *                        ordered according to the time in which the user
+     *                        searched for them.
      */
     public static void printLocationHistory(ArrayList<Location> LocationHistory){
         if(LocationHistory != null && LocationHistory.size() > 0){
