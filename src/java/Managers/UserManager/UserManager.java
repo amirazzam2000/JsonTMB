@@ -5,7 +5,7 @@ import DataModel.LocationData.Location;
 import DataModel.TransportationData.RouteData.Route;
 import DataModel.TransportationData.StationData.Station;
 import DataModel.TransportationData.StopData.Stop;
-import DataModel.User.User;
+import DataModel.UserData.User;
 import Managers.Location.LocationManager;
 
 import java.util.ArrayList;

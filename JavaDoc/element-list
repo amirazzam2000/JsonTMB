@@ -4,7 +4,7 @@ DataModel.LocationData
 DataModel.TransportationData.RouteData
 DataModel.TransportationData.StationData
 DataModel.TransportationData.StopData
-DataModel.User
+DataModel.UserData
 JsonParsing.Location
 JsonParsing.ParsingExceptions.LineExceptions
 JsonParsing.ParsingExceptions.RouteExceptions

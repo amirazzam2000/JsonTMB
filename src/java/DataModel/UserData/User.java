@@ -1,4 +1,4 @@
-package DataModel.User;
+package DataModel.UserData;
 
 import DataModel.LocationData.FavLocation;
 import DataModel.LocationData.Location;
@@ -7,7 +7,6 @@ import DataModel.TransportationData.StationData.Station;
 import DataModel.TransportationData.StopData.Stop;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
