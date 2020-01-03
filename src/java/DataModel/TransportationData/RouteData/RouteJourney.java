@@ -37,10 +37,13 @@ public class RouteJourney {
      * @param journey the journey to be copied
      */
     public RouteJourney(RouteJourney journey) {
+        this.origin = journey.origin;
+        this.stopCode = journey.stopCode;
         this.destination = journey.destination;
         this.time = journey.time;
         this.distance = journey.distance;
         this.mode = journey.mode;
+        this.lineOrStreet = journey.lineOrStreet;
     }
 
     public String getOrigin() {
