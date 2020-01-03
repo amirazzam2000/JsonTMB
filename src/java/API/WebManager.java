@@ -167,18 +167,18 @@ public class WebManager implements Webservice{
     /**
      * calls the TMB API to get all the Bus Lines waiting time, considering only
      * the Bus lines that stop at the specified stop.
-     * @param StopId the stop id of the requested stop
+     * @param stopId the stop id of the requested stop
      * @return a Json String with all the information about the Bus lines at
      * the specified stop, and it returns <b>null</b>> if the stop id is invalid
      * or if something went wrong
      */
     @Override
-    public String callLine(String StopId){
+    public String callLine(String stopId){
         String jsonData = null;
         OkHttpClient client = new OkHttpClient();
         url = new StringBuilder();
         url.append("https://api.tmb.cat/v1/ibus/stops/");
-        url.append(StopId);
+        url.append(stopId);
         url.append(appId);
 
         //request a call
