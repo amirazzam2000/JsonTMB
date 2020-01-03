@@ -46,7 +46,12 @@ public class JsonRouteReader {
         // was any error in the process
 
         if (jsonRoute.has("error")){
-            if (jsonRoute.get("error").getAsString().compareToIgnoreCase("No trip found. There may be no transit service within the maximum specified distance or at the specified time, or your start or end point might not be safely accessible.") == 0)
+
+            if (jsonRoute.get("error").getAsString().compareToIgnoreCase("No " +
+                    "trip found. There may be no transit service within the " +
+                    "maximum specified distance or at the specified time, or " +
+                    "your start or end point might not be safely accessible.") == 0)
+
                 throw new RouteOutOfReach("TMB is doing its best to make the bus and subway make this route in the future.");
             else
                 throw new RouteWrongParameter("Error, there is some wrong parameter :(");
