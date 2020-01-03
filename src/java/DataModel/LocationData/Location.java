@@ -86,7 +86,6 @@ public class Location {
         this.coordinates[1] = longitude;
     }
 
-
     public void setCoordinates(double[] coordinates) {
         this.coordinates = coordinates;
     }
