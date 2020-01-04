@@ -5,7 +5,7 @@ package DataModel.LocationData;
  *
  * Class: java.DataModel.LocationData.Location
  *
- * <p>Stores all the information about a specific location and offers the
+ * <p>Stores all the information about a general location and offers the
  * ability to read and change this information
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
