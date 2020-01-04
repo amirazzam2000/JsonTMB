@@ -243,7 +243,8 @@ public class MainSystem {
                                     if (exist) {
                                         goIn = false;
                                         String option ;
-                                        System.out.println("this location is already A favorite location ... would you ike to change the type of your favorite location? (yes/no)");
+                                        System.out.println("this location is " +
+                                                "already A favorite location ... would you like to change the type of your favorite location? (yes/no)");
                                         scanner = new Scanner(System.in);
                                         option = scanner.nextLine().trim();
                                         do{
