@@ -4,11 +4,12 @@ import java.util.Comparator;
 
 /**
  *
- * Class: java.DataModel.TransportationData.StopData.Stop
+ * Class: java.DataModel.TransportationData.StopData.Line
  *
- * <p>Stores all the information about a specific Stop and offers the
- * ability to read, change and compare this information with the information
- * of other Stop.<p>
+ * <p>Stores all the information about a specific Bus line that stops at a
+ * specific stop and offers the ability to read, change and compare this
+ * information with the information of another bus line that stop at the same
+ * stop.<p>
  * this class implements the {@link Comparator} interface in order to be able
  * to sort objects from this class if needed.<p>
  *
