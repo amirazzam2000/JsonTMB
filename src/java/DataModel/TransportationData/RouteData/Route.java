@@ -67,6 +67,15 @@ public class Route {
         itineraries.add(itinerary);
     }
 
+    /**
+     * gets the position of the itinerary that takes the least amount of time
+     * to connect origin with destination and is within the max walking
+     * distance
+     * @param maxWalkingDistance the makes walking distance specified by the
+     *                           user
+     * @return an integer representing the position of the chosen itinerary
+     * form the itineraries array
+     */
     public int getShortestRoute(float maxWalkingDistance){
         int i = 0;
         int shortest = Integer.MAX_VALUE;
