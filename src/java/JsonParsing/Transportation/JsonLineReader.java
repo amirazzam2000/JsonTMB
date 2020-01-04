@@ -42,7 +42,7 @@ public class JsonLineReader {
 
         // for each line in the station read all of its information and add
         // it to the lines array
-        if(jsonLines.has("status")){
+        if(jsonLines.has("status") && jsonLines.get("data").getAsJsonObject().get("ibus").getAsJsonArray().size() >= 1){
             for (JsonElement line: jsonLines.get("data").getAsJsonObject().get("ibus").getAsJsonArray()) {
                 auxLine.setStopId(stopId);
                 if (line.getAsJsonObject().has("destination"))

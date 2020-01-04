@@ -7,9 +7,10 @@ import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
+        MainSystem mainSystem = new MainSystem();
         try {
             JsonLocationReader.readLocations();
-            MainSystem.mainSystem();
+            mainSystem.mainSystem();
         } catch (FileNotFoundException e) {
             System.out.println("Error: Can lunch the program. " + System.lineSeparator() +
                     "the location.Json file was not found");
