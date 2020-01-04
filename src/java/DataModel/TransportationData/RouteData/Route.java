@@ -1,14 +1,41 @@
 package DataModel.TransportationData.RouteData;
 
+import JsonParsing.Transportation.JsonRouteReader;
+import System.MainSystem;
 import java.util.ArrayList;
 
 /**
  *
  * Class: java.DataModel.TransportationData.RouteData.Route
  *
- * <p>Stores all the information about a specific route, with all the different
- * possible itineraries. <p>This class also offers the ability to Modify,
- * and read the information of a route.
+ * <p>This class stores the information of one route with all its different
+ * itineraries. This class has two types of data, ones that required by
+ * the TMB API in order to request a route, and the rest are what we store
+ * form the API’s response which is a list of all the itineraries that
+ * connects the origin with the destination.
+ * <p></p>
+ * The information of this class will be filled both by the
+ * {@link JsonRouteReader} class, and by the user’s input in the
+ * {@link MainSystem} class.
+ * <p></p>
+ * This class offers one default constructor with no attributes that will
+ * create an empty Route with all its attributes initialized, and another
+ * copy constructor that takes a Route in its parameter and create a copy of
+ * it.
+ * <p></p>
+ * Moreover, this class offers setters and getters to all the attributes
+ * which allows us to save the user’s input in the {@link MainSystem}, and it
+ * has method called <b>addItineraries</b> (which takes an {@link Itinerary}
+ * as a parameter, and adds it to the list of itineraries this route can
+ * have) and this method will allow us to save the API’s response in
+ * {@link JsonRouteReader}.
+ * <p></p>
+ * <p></p>
+ * Moreover, this class has one more method which is used to choose which
+ * itinerary should be picked as the best itinerary in the itineraries list.
+ * this method picks the itinerary that takes the least amount of time, and its
+ * walking distance is within the max walking limit distance assigned by the
+ * user.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

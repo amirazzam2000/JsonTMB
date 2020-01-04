@@ -1,14 +1,33 @@
 package DataModel.TransportationData.RouteData;
 
+import JsonParsing.Transportation.JsonRouteReader;
+
 /**
  *
  * Class: java.DataModel.TransportationData.RouteData.Route
  *
- * <p>Stores all the information about one Journey, the origin and
+ * <p>This class stores all the information about one Journey (the origin and
  * destination, alongside other secondary information that is important to
- * define a journey and make it specific.
- * <p>This class allows us to modify and read the information stored in a
- * journey
+ * define a journey and make it specific).
+ * <p></p>
+ * A Journey is a part of one itinerary, so it’s a sub-Route that connects
+ * two points.
+ * <p></p>
+ * this class stores the id of the station or the stop if the
+ * origin is one, and it stores if the way to get from the origin to the
+ * destination is Walking or Transit (by metro or bus) …etc.
+ * <p></p>
+ * Moreover,it stores the bus/metro line code if exist, or null otherwise.
+ * <p></p>
+ * The information of this class is filled by {@link JsonRouteReader}, with the
+ * response of the TMB API after requesting a Route with valid parameters.
+ *
+ * This class have two constructors one is the default constructor with no
+ * attributes, the other one is a copy constructor that takes a
+ * {@link RouteJourney} as a parameter and creates a copy of it.
+ * <p></p>
+ * It also offers setters and getters for all attributes in order to add the
+ * information into the class and to read them when needed.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

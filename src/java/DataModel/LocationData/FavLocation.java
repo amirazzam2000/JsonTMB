@@ -5,8 +5,29 @@ package DataModel.LocationData;
  *
  * Class: java.DataModel.LocationData.FavLocation
  *
- * <p>Stores all the information about the use's favorite locations and offers the
- * ability to read and change its information
+ *
+ * This class stores a location that the user has assigned as one of their
+ * favorite locations, a favorite location consists of a location and a type.
+ * The location will be from the datatype {@link Location}, whereas the type is a
+ * {@link String} that specifies the type of the location stored.
+ *  <p></p>
+ *  the information of this class will be filled in the MainSystem.
+ * The FavLocation class has only one constructor that takes a {@link Location}
+ * and a {@link String}, representing the type of the location, and creates a
+ * FavLocation with that location and that type. Moreover, this class also
+ * offers a method called <b>containLocation</b> which takes a
+ * {@link Location} in its parameter and compare it to the location stored
+ * in the FavLocation that called this method, it returns a {@link Boolean}
+ * that will be <code>true</code> if the two locations are the same, and
+ * <code>false</code> if not.
+ * <p></p>
+ * However, this class offers setters and getters to access and modify its
+ * attributes which we use in the MainSystem in order to give the user the
+ * possibility to edit their favorite location’s type. In other words, if the
+ * user assign a location as their favorite location, then they try to assign
+ * the same place as their favorite location again, the will not be able to,
+ * but they will be able to change the <code>type</code> of their already
+ * assigned favorite location
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
