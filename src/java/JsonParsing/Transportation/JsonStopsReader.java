@@ -12,7 +12,16 @@ import java.util.ArrayList;
  *
  * Class: java.JsonParsing.Transportation.JsonStopsReader
  *
- * <p>Parse the Stop information form a Json String
+ * <p>This class reads the response of the TMB API when requested to send the
+ * all the Stops supported by TMB. The response is sent from the {@link API}
+ * module to this class as a Json String.
+ * <p></p>
+ * The class does not store any data and has only two methods, one of them reads
+ * the response of the API, and returns all the stops that are within 0.5Km
+ * radios from a specified favorite location.
+ * <p></p>
+ * And the second method calculates the distance between two locations
+ * knowing their coordinates in the EPSG: 4326 coordinates system.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

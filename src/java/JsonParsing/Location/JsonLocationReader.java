@@ -5,6 +5,8 @@ import DataModel.LocationData.Location;
 
 import DataModel.LocationData.Monument;
 import DataModel.LocationData.Restaurant;
+import DataModel.TransportationData.StopData.Line;
+import DataModel.TransportationData.StopData.Stop;
 import Managers.Location.*;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -14,6 +16,32 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ *
+ * Class: java.JsonParsing.Location.JsonLocationReader
+ *
+ * <p>This class reads the information stored in Location.json file, this
+ * file contains four kinds of locations: Restaurants, Hotels, Monuments and
+ * generic locations.
+ * <p></p>
+ * Note that for each kind of locations there is one corresponding class in
+ * the {@link DataModel}.
+ * <p></p>
+ * This class does not store any data and only one static method that parse the
+ * information from the json file. then, for each location in the file it
+ * creates an object from its corresponding class {@link Location},
+ * {@link Hotel}, {@link Restaurant}, or {@link Monument} and fills it with
+ * the information of that location. afterwards, all of these locations are
+ * added to the {@link LocationManager} which stores all the locations in
+ * the system.
+ * <p></p>
+ *
+ * @author Amir Azzam - amir.azzam@students.salle.url.edu
+ * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
+ * @version 27/12/2019
+ *
+ * @see Location
+ */
 public class JsonLocationReader {
 
     /**

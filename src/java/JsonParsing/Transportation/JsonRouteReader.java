@@ -3,6 +3,7 @@ package JsonParsing.Transportation;
 import DataModel.TransportationData.RouteData.Itinerary;
 import DataModel.TransportationData.RouteData.Route;
 import DataModel.TransportationData.RouteData.RouteJourney;
+import JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteOutOfReach;
 import JsonParsing.ParsingExceptions.RouteExceptions.RouteWrongParameter;
 import com.google.gson.JsonElement;
@@ -13,7 +14,19 @@ import com.google.gson.JsonParser;
  *
  * Class: java.JsonParsing.Transportation.JsonRouteReader
  *
- * <p>Parse the Route information form a Json String
+ * <p>This class reads the response of the TMB API when requested to send the
+ * routes that connects two points. The response is sent from the {@link API}
+ * module to this class as a Json String.
+ * <p></p>
+ * does not store information and only has one method, this method
+ * checks the Json String it received, if there is any error with requested
+ * parameters that resulted in a problem in the response, then the method
+ * will throw one of the {@link RouteExceptions} depending on the content of
+ * the response.
+ * <p></p>
+ * However, if the format of the Json String is fine, and the respond was
+ * successful, then the method will parse the information from the Json
+ * String and store it in a {@link Route} object that it will return.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

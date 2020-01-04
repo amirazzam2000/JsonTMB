@@ -14,7 +14,20 @@ import java.util.ArrayList;
  *
  * Class: java.JsonParsing.Transportation.JsonStopsReader
  *
- * <p>Parse the Bus Lines information form a Json String
+ * <p>This class reads the response of the TMB API when requested to send the
+ * Buses waiting time on a specific stop that is supported by TMB. The
+ * response is sent from the API module to this class as a Json String.
+ * <p></p>
+ * This class has no attributes and only one method, this method checks the
+ * Json String it received, if there is any error with requested parameters
+ * that resulted in a problem in the response, then this method will throw a
+ * {@link LineException}.
+ * <p></p>
+ * However, if the response is successful, then the
+ * method will parse the information in the json string and return an array
+ * of type {@link Line} that contains all the buses that stop at the specified
+ * stop with the time left for each to arrive at the stop.
+ * <p></p>
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

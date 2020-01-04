@@ -13,7 +13,19 @@ import java.util.ArrayList;
  *
  * Class: java.JsonParsing.Transportation.JsonStationReader
  *
- * <p>Parse the Station information form a Json String
+ * <p>This class reads the response of the TMB API when requested to send the
+ * all the Stations supported by TMB. The response is sent from the {@link API}
+ * module to this class as a Json String
+ * <p></p>
+ * The class does not store any information but it has three methods, two of
+ * them reads the response of the API, the only difference between the two
+ * methods is the way they filter the information in the json String. One
+ * method returns all the stations that are within 0.5Km radios from a
+ * specified favorite location, while the other one returns the stations that
+ * were inaugurated on the birth year of the user.
+ * <p></p>
+ * And the third method calculates the distance between two locations knowing
+ * their coordinates in the <i>EPSG: 4326 coordinates system</i>.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
