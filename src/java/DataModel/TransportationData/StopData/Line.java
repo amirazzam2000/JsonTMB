@@ -6,12 +6,35 @@ import java.util.Comparator;
  *
  * Class: java.DataModel.TransportationData.StopData.Line
  *
- * <p>Stores all the information about a specific Bus line that stops at a
- * specific stop and offers the ability to read, change and compare this
- * information with the information of another bus line that stop at the same
- * stop.<p>
- * this class implements the {@link Comparator} interface in order to be able
- * to sort objects from this class if needed.<p>
+ * <p>This class store the information of a bus line that stops at a specific
+ * stop, offering the ability to compare it with other bus lines that stop at
+ * the same stop.
+ * <p></p>
+ * Furthermore, it allows us to read and modify the information of each line.
+ * <p></p>
+ * This class is used to know the bus wait time at a specific stop, so each
+ * object of this class will store the id of the stop and the name of the bus
+ * line, then it will have the time left for this this bus to arrive at the
+ * stop in minutes.
+ * <p></p>
+ * This class fills its attributes with information using the class
+ * {@link JsonParsing.Transportation.JsonLineReader} .
+ * This class implements the {@link Comparator} interface in order to be able
+ * to sort the different bus lines that stop at the specified station
+ * according to their time left to arrive at the stop.
+ * <p>
+ * In order to do that the class implements the method <b>compare</b> that
+ * compares two bus lines according to their TimeLeftMin.
+ * <p></p>
+ * This class also has two constructing methods, one default constructing
+ * method that does not take any parameters and initializes all attributes,
+ * and another copy constructor that take another object form the class
+ * {@link Line} and constructs a new {@link Line} object with the same
+ * information.
+ * <p></p>
+ * Additionally, this class has getters and setters for all attributes so it
+ * would be possible to fill the attributes with information, and print it
+ * when needed
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

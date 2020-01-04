@@ -6,11 +6,39 @@ import java.util.Comparator;
  *
  * Class: java.DataModel.TransportationData.StopData.Stop
  *
- * <p>Stores all the information about a specific Stop and offers the
+ * <p>This class stores all the information about a stop and offers the
  * ability to read, change and compare this information with the information
- * of other Stop.<p>
- * this class implements the {@link Comparator} interface in order to be able
- * to sort objects from this class if needed.<p>
+ * of other stop.
+ * <p></p>
+ * This class stores information when the user selects the option to show all
+ * the stops and stations around their favorite locations.
+ * <p></p>
+ * it stores the the favorite location Coordinates, name,
+ * and the distance from that favorite location to relate the station to its
+ * favorite location nearby.
+ * <p></p>
+ * However, it also store the Stop code, Date of creation, and Stop name
+ * which are needed to identify the stop and when printing its information.
+ * <p></p>
+ * The information of this class is filled by {@link JsonParsing.Transportation.JsonStopsReader}
+ * class, after filtering the information it receives from the TMB API.
+ * <p></p>
+ * This class implements the {@link Comparator} interface, so it implements the
+ * method <b>compare</b> to be able to compare two stops that share the same
+ * near favorite location, and it compares them according to their distance
+ * from that common favorite location.
+ * <p></p>
+ * This feature is then used by the class {@link DataModel.UserData.User} in
+ * order to sort the array of stops the user has.
+ * <p></p>
+ * This class also has two constructing methods, one default constructing
+ * method that does not take any parameters and initializes all attributes,
+ * and another copy constructor that take another object form the class
+ * {@link Stop} and constructs a new {@link Stop} object with the same
+ * information.
+ * <p></p>
+ * Moreover, it has getters and setters, for all attributes, that are used
+ * when filling the object with the information or while printing it.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

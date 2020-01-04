@@ -5,7 +5,7 @@ import DataModel.LocationData.Location;
 import DataModel.TransportationData.RouteData.Route;
 import DataModel.TransportationData.StationData.Station;
 import DataModel.TransportationData.StopData.Stop;
-
+import System.MainSystem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +13,41 @@ import java.util.List;
  *
  * Class: java.DataModel.User.User
  *
- * <p>Stores all the information about one user, it also stores the user's
- * favorite locations, stops, stations and routes.<p>This class also allows
- * modifying and reading the information of the user.
+ * <p>This class stores all the information of one user, it also stores the
+ * user's favorite locations, stops, stations and routes. Additionally, This
+ * class allows modifying and reading the information of the user.
+ * <p></p>
+ * This information is mostly used in the {@link MainSystem} in which the
+ * menu is controlled.
+ * <p></p>
+ * The user has many attributes to store all the information required to do
+ * the tasks in the menu.
+ * The user stores the name and the email are necessary to log in with the user
+ * as they are the identifiers of each user. However, this class also stores
+ * the user's birth year which is necessary to know what stations were
+ * inaugurated at the same year as that year. Moreover, this class stores
+ * the user's favorite stops and stations as arrays of type {@link Station} and
+ * {@link Stop}, all locations created by that user in an array of
+ * {@link Location}, and all locations that the user has searched for in
+ * another  array of {@link Location} (each location appearing once in the
+ * list at most and sorted according to the time when the user searched for
+ * the location). Furthermore, the user stores all the routes they have
+ * planned in an array of {@link Route} , and their favorite locations in an
+ * array of {@link FavLocation}.
+ * <p></p>
+ * <p></p>
+ * This class have only one default constructor method  with no parameters
+ * that initialize the attribute of the class. It also has methods to <b>add</b>
+ * (routes, stations, stops, locations to the Location history or to
+ * the user's Locations, and finally favorite locations to the users favorite
+ * locations).
+ * <p></p>
+ * This class also has two methods to sort the Stations and Stops
+ * as both classes {@link Station} and {@link Stop} implements the
+ * {@link java.util.Comparator} interface.
+ * <p></p>
+ * Finally, this class has setters and getters to be able to read all the
+ * user’s information and modify it if needed.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
