@@ -6,12 +6,16 @@ import DataModel.TransportationData.RouteData.Route;
  *
  * Class: java.JsonParsing.ParsingExceptions.LineExceptions.LineException
  *
- * <p>Signals that an attempt to get a Bus Lines information at a specific
+ * <p>Signals that an attempt to get a Bus Line's information at a specific
  * stop has failed, because the Stop ID was invalid
  * <p>
  * This Exception will be thrown by
  * {@link JsonParsing.Transportation.JsonLineReader}, if it receives a Json
  * String with an error code.
+ * <p></p>
+ * Additionally, it has one constructor that takes a message as a parameter
+ * and builds the exception with that message. Moreover, it has a getter for
+ * that message in order to be able to read it if needed.
  *
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu

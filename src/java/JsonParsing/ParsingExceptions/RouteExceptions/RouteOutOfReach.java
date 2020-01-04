@@ -15,6 +15,9 @@ import DataModel.TransportationData.RouteData.Route;
  * transit service within the maximum specified distance or at the specified
  * time, or your start or end point might not be safely accessible."
  *
+ * Additionally, it has one constructor that takes a message as a parameter
+ * and builds the exception with that message. Moreover, it has a getter for
+ * that message in order to be able to read it if needed.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

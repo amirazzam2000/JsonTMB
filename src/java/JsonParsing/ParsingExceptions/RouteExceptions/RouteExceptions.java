@@ -8,11 +8,18 @@ import java.security.PrivateKey;
  *
  * Class: java.JsonParsing.ParsingExceptions.RouteExceptions.RouteExceptions
  *
- * <p>Signals that an attempt to get a route information has failed,
+ * <p>This exception is a generic exception, that signals a problem trying to
+ * read the Route Json String the TMB API has responded with.
  * <p>
  * This Exception will be thrown by
  * {@link JsonParsing.Transportation.JsonRouteReader}, if it receives a mal
- * formed Json String or if the Json String had it's error field not null
+ * formatted Json String or if the Json String has an error field that is not
+ * null
+ *
+ * <p></p>
+ * Additionally, it has one constructor that takes a message as a parameter
+ * and builds the exception with that message. Moreover, it has a getter for
+ * that message in order to be able to read it if needed.
  *
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
