@@ -5,8 +5,23 @@ package DataModel.LocationData;
  *
  * Class: java.DataModel.LocationData.Location
  *
- * <p>Stores all the information about a general location and offers the
- * ability to read and change this information
+ * <p>
+ * This class stores the information of a general location, and offers the
+ * ability to read and change this information.
+ * <p>
+ * the information in this class is filled using the {@link JsonParsing.Location.JsonLocationReader} class,
+ * or the {@link DataModel.UserData.User} class when a user create a new
+ * location. Moreover, this is the generic location there is
+ * subclasses, that inherit from this class, that have more attributes to
+ * store  more specific information about the location.
+ * <p>
+ * <p></p>
+ * The methods this class offers are basically three constructors  (one
+ * default constructor, two constructors with parameters; one with
+ * coordinates as an array of two numbers of type double, the other one is
+ * with  latitude and longitude separated ), this class also offers setters
+ * and  getters to all the attributes it has as we want to be able to read,
+ * and  modify this information in the future.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
