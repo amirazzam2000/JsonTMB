@@ -7,6 +7,7 @@ import DataModel.TransportationData.StopData.Line;
 import DataModel.TransportationData.StopData.Stop;
 import DataModel.UserData.User;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 
 /**
@@ -146,14 +147,12 @@ public class UI {
      * @param locations contains all the locations created by the user
      */
     public static void printMyLocationOption(ArrayList<Location> locations){
-        String createOption;
         if(locations.size() != 0){
+            System.out.println();
             for(Location location: locations){
-                System.out.println("Location Name: " + location.getName());
-                System.out.println("- Length: " + location.getLongitude());
-                System.out.println("- Latitude: " + location.getLatitude());
-                System.out.println("- Description: " + location.getDescription() + System.lineSeparator());
+                System.out.println("- " + location.getName());
             }
+            System.out.println();
         }
         else{
             System.out.println("You don't have any location created.");

@@ -109,9 +109,15 @@ public class MainSystem {
                                 do {
                                     UI.printMyLocationOption(users.getMyLocation());
                                     System.out.println("Want to create a new location? (yes/no)");
-                                    input = scanner.nextLine().trim();
+                                    do {
+                                        input = scanner.nextLine().trim();
+                                        if (input.compareToIgnoreCase("yes") != 0 && input.compareToIgnoreCase("no") != 0)
+                                            UI.printInputErrorYN();
+
+                                    }while(input.compareToIgnoreCase("yes") != 0 && input.compareToIgnoreCase("no") != 0);
+
                                     if (input.compareToIgnoreCase("yes") == 0) {
-                                        flag = true;
+                                        flag = false;
                                         Location location = new Location();
                                         do {
                                             System.out.println("Location Name: ");
@@ -122,10 +128,30 @@ public class MainSystem {
                                         } while (check);
 
                                         do {
-                                            System.out.println("Length: ");
-                                            location.setLongitude(scanner.nextFloat());
-                                            System.out.println(System.lineSeparator() + "Latitude: ");
-                                            location.setLatitude(scanner.nextFloat());
+                                            do{
+                                                flag = false;
+                                                System.out.println("Length: ");
+                                                scanner =
+                                                        new Scanner(System.in);
+                                                try {
+                                                    location.setLongitude(scanner.nextFloat());
+                                                } catch (InputMismatchException e) {
+                                                    System.out.println("you can only enter numbers here!");
+                                                    flag = true;
+                                                }
+                                            }while(flag);
+                                            do{
+                                                System.out.println(System.lineSeparator() + "Latitude: ");
+                                                flag = false;
+                                                scanner =
+                                                        new Scanner(System.in);
+                                                try {
+                                                    location.setLatitude(scanner.nextFloat());
+                                                } catch (InputMismatchException e) {
+                                                    System.out.println("you can only enter numbers here!");
+                                                    flag = true;
+                                                }
+                                            }while(flag);
                                             check = LocationManager.checkCoordinates(location.getLatitude(), location.getLongitude());
                                             if (!check)
                                                 UI.printErrorCoordinates();
@@ -135,13 +161,8 @@ public class MainSystem {
                                         location.setDescription(scanner.nextLine());
                                         users.createNewMyLocation(location);
                                         UI.printInfoValidMessage();
-                                    } else if (input.compareToIgnoreCase("no") == 0) {
-                                        flag = false;
-                                    } else {
-                                        flag = false;
-                                        UI.printInputErrorYN();
                                     }
-                                } while (flag);
+                                } while (input.compareToIgnoreCase("no") != 0);
 
                                 break;
                             case "b":
