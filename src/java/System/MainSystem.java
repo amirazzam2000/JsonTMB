@@ -56,10 +56,10 @@ public class MainSystem {
     }
 
     /**
-     * this method is responsible of registering the user and it controls the
-     * main menu and the option 1 menu, asking for the user's choice, and
-     * make sure it's in the menu, then call the method that corresponds to
-     * the option chosen
+     * this method is responsible of registering the user, as well as
+     * controlling the main menu and the option 1’s menu, asking for the
+     * user's choice making sure it's an option in the menu, then calling the
+     * method that corresponds to the option chosen.
      * */
     public void mainSystem(){
         // initializing variables
@@ -157,9 +157,13 @@ public class MainSystem {
     }
 
     /**
-     * manages option a from the menu in option 1, and this option allows the
-     * user to create a new location, so the system has to check that all the
-     * information the user is entering are correct and ask for it again if not
+     * manages option a from the menu in option 1, This method prints the
+     * locations created by the user and  allows the user to create a new
+     * location. If the user wants to create a new location the system must
+     * check that all the information the user is entering are valid and ask
+     * for it again if not. After all information is successfully registered
+     * the system has to add the location to the user’s locations and to the
+     * LocationManager’s array of locations.
      */
     private  void optionA(){
         boolean flag, check ;
@@ -226,7 +230,7 @@ public class MainSystem {
     }
 
     /**
-     * manages option b from the menu in option 1, which is responsible of
+     * manages option b from the menu in option 1, which is responsible for
      * showing the user's location search history
      */
     private void optionB(){
@@ -234,15 +238,15 @@ public class MainSystem {
     }
 
     /**
-     * manages option c from the menu in option 1, which is responsible of
-     * showing all the user's planed routes
+     * manages option c from the menu in option 1, which is responsible for
+     * showing all the user's planned routes
      */
     private void optionC(){
         UI.printMyRoutes(users.getMyRoutes());
     }
     /**
      * manages option d from the menu in option 1, and this option is
-     * responsible of showing all the stations and stops that are within 0
+     * responsible for showing all the stations and stops that are within 0
      * .5Km radios from each of the locations the user has assigned as
      *  a favorite location
      */
@@ -275,8 +279,8 @@ public class MainSystem {
 
     /**
      * manages option e from the menu in option 1, this option is responsible
-     * of showing all the stations that were inaugurated at the same year as
-     * the users birth year
+     * for showing all the stations that were inaugurated at the same year as
+     * the user's birth year
      */
     private  void optionE() {
         String JsonString;
@@ -295,13 +299,14 @@ public class MainSystem {
     /**
      * manages option 2 of the main menu, this option is responsible for
      * searching for a location in the locations registered in the system using
-     * the location's name. if the location exists it shows all of it's
+     * the location's name. if the location exists it shows all its
      * information otherwise the method is skipped.
      *
-     * This method is also also responsible of assigning locations as favorite
-     * locations if the user wants to. Moreover, if the user enters
-     * information that is not in the format it
-     * was requested in they will be asked to enter it again.
+     * This method is also responsible of assigning locations as favorite
+     * locations if the user wants to.
+     *
+     * Additionally, if the user enters information that is not in the format it
+     * was requested in, this method has to ask the user to enter it again.
      *
      */
     private  void option2() {
@@ -369,10 +374,10 @@ public class MainSystem {
     }
 
     /**
-     * manages option 3 of the main menu, this option is responsible of
+     * manages option 3 of the main menu, this option is responsible for
      * planning a new route, it collects the information form the user making
      * sure the information entered is valid and relevant. then it makes the
-     * call to the TMB API to get all the route with all the itineraries,
+     * call to the TMB API to get the route with all the itineraries,
      * add it to the user's routes then display the fastest one with respect
      * to the maxWalkingDistance.
      */
@@ -485,7 +490,7 @@ public class MainSystem {
     }
 
     /**
-     * manages option 4 of the main menu, this option is responsible of
+     * manages option 4 of the main menu, this option is responsible for
      * showing the buses waiting time on a specified Stop, so it asks the
      * user for a stop id. Then, it calls the API to get the bus lines time
      * schedule on that stop, then display it according to which bus arrives
