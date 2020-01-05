@@ -145,7 +145,7 @@ public class UserManager {
             users.get(0).addStops(stops);                                       // distance from the location specified
             users.get(0).sortStations();
             users.get(0).sortStops();
-            if (stations == null || stations.size() == 0 || stops == null || stops.size() == 0 )
+            if ((stations == null || stations.size() == 0) && (stops == null || stops.size() == 0) )
                 return false;
         }
         return true;
