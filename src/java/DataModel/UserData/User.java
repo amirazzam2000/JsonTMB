@@ -47,7 +47,7 @@ import java.util.List;
  * {@link java.util.Comparator} interface.
  * <p></p>
  * Finally, this class has setters and getters to be able to read all the
- * user’s information and modify it if needed.
+ * user's information and modify it if needed.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu
