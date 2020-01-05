@@ -56,8 +56,10 @@ public class MainSystem {
     }
 
     /**
-     * this method runs the main functionalities of the system by connecting the methods from all the classes together
-     * in order to come up with final result
+     * this method is responsible of registering the user and it controls the
+     * main menu and the option 1 menu, asking for the user's choice, and
+     * make sure it's in the menu, then call the method that corresponds to
+     * the option chosen
      * */
     public void mainSystem(){
         // initializing variables
@@ -115,10 +117,10 @@ public class MainSystem {
                                 optionA();
                                 break;
                             case "b":
-                                UI.printLocationHistory(users.getLocationHistory());
+                                optionB();
                                 break;
                             case "c":
-                                UI.printMyRoutes(users.getMyRoutes());
+                                optionC();
                                 break;
                             case "d":
                                 optionD();
@@ -154,6 +156,11 @@ public class MainSystem {
 
     }
 
+    /**
+     * manages option a from the menu in option 1, and this option allows the
+     * user to create a new location, so the system has to check that all the
+     * information the user is entering are correct and ask for it again if not
+     */
     private  void optionA(){
         boolean flag, check ;
         String input;
@@ -218,6 +225,27 @@ public class MainSystem {
 
     }
 
+    /**
+     * manages option b from the menu in option 1, which is responsible of
+     * showing the user's location search history
+     */
+    private void optionB(){
+        UI.printLocationHistory(users.getLocationHistory());
+    }
+
+    /**
+     * manages option c from the menu in option 1, which is responsible of
+     * showing all the user's planed routes
+     */
+    private void optionC(){
+        UI.printMyRoutes(users.getMyRoutes());
+    }
+    /**
+     * manages option d from the menu in option 1, and this option is
+     * responsible of showing all the stations and stops that are within 0
+     * .5Km radios from each of the locations the user has assigned as
+     *  a favorite location
+     */
     private  void optionD(){
         if (users.getFavLocations() != null && users.getFavLocations().size() > 0) {
             // for each favorite location find all
@@ -245,6 +273,11 @@ public class MainSystem {
     }
 
 
+    /**
+     * manages option e from the menu in option 1, this option is responsible
+     * of showing all the stations that were inaugurated at the same year as
+     * the users birth year
+     */
     private  void optionE() {
         String JsonString;
         JsonString = webManager.callAllStations();
@@ -259,6 +292,18 @@ public class MainSystem {
         }
     }
 
+    /**
+     * manages option 2 of the main menu, this option is responsible for
+     * searching for a location in the locations registered in the system using
+     * the location's name. if the location exists it shows all of it's
+     * information otherwise the method is skipped.
+     *
+     * This method is also also responsible of assigning locations as favorite
+     * locations if the user wants to. Moreover, if the user enters
+     * information that is not in the format it
+     * was requested in they will be asked to enter it again.
+     *
+     */
     private  void option2() {
         boolean flag;
         System.out.println("Enter the name of a location: ");
@@ -323,6 +368,14 @@ public class MainSystem {
         }
     }
 
+    /**
+     * manages option 3 of the main menu, this option is responsible of
+     * planning a new route, it collects the information form the user making
+     * sure the information entered is valid and relevant. then it makes the
+     * call to the TMB API to get all the route with all the itineraries,
+     * add it to the user's routes then display the fastest one with respect
+     * to the maxWalkingDistance.
+     */
     private  void option3() {
         boolean flag;
         Scanner scanner ;
@@ -431,6 +484,13 @@ public class MainSystem {
         }while (flag);
     }
 
+    /**
+     * manages option 4 of the main menu, this option is responsible of
+     * showing the buses waiting time on a specified Stop, so it asks the
+     * user for a stop id. Then, it calls the API to get the bus lines time
+     * schedule on that stop, then display it according to which bus arrives
+     * first at the stop.
+     */
     private  void option4() {
         boolean flag;
         Scanner scanner;

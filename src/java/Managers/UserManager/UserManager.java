@@ -17,14 +17,13 @@ import java.util.List;
  *
  * <p>Manages the data of all the user objects, and stores all the
  * users registered in the system.
- * <p>In a nutshell, This class allows to modify, read and analyze the data
+ * <p>In a nutshell, This class modifies, reads and analyzes the data
  * of all the users in the system.
  *
  * @apiNote the system can only have one user as we did not implement the
- * optional that allows more than ne user in the system.
+ * optional that allows more than ne user in the system. and that is why we
+ * always get the user at position 0.
  *
- * @implNote as we mentioned there can only be one user in the system which
- * explains why we always get the user at position 0
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
  * @author <p>Nicole Alexa leser - nicolealexa.leser@students.salle.url.edu

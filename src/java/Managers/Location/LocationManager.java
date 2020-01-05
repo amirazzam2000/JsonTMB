@@ -8,9 +8,9 @@ import java.util.ArrayList;
  *
  * Class: java.Managers.Location.LocationManager
  *
- * <p>Manages the data of all the location objects, and stores all the
+ * <p>Manages the data of all the location objects and stores all the
  * locations registered in the system.
- * <p>In a nutshell, This class allows to modify, read and analyze the data
+ * <p>In a nutshell, This class modifies, reads and analyzes the data
  * of all the locations in the system.
  *
  * @author Amir Azzam - amir.azzam@students.salle.url.edu
