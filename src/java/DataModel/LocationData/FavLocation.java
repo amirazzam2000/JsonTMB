@@ -23,7 +23,7 @@ package DataModel.LocationData;
  * <p></p>
  * However, this class offers setters and getters to access and modify its
  * attributes which we use in the MainSystem in order to give the user the
- * possibility to edit their favorite location’s type. In other words, if the
+ * possibility to edit their favorite location's type. In other words, if the
  * user assign a location as their favorite location, then they try to assign
  * the same place as their favorite location again, the will not be able to,
  * but they will be able to change the <code>type</code> of their already
